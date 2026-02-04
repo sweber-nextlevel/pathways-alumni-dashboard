@@ -1189,34 +1189,31 @@ export default function Home() {
             )}
           </div>
 
-          {/* Studying vs Bursary Comparison */}
+          {/* Studying vs Bursary Comparison - Split into two separate containers */}
           <div style={{
-            backgroundColor: 'white',
-            padding: '24px',
-            borderRadius: '12px',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-            border: '1px solid #f3f4f6',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+            gap: '24px',
             marginTop: '32px'
           }}>
-            <h3 style={{
-              margin: '0 0 24px 0',
-              fontSize: '18px',
-              fontWeight: '600',
-              color: '#1f2937'
-            }}>Studying Alumni & Bursary Recipients</h3>
+            {/* Studying vs Bursary Bar Chart */}
             <div style={{
-              display: 'flex',
-              gap: '32px',
-              alignItems: 'flex-start',
-              justifyContent: 'center',
-              flexWrap: 'wrap'
+              backgroundColor: 'white',
+              padding: '24px',
+              borderRadius: '12px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+              border: '1px solid #f3f4f6'
             }}>
+              <h3 style={{
+                margin: '0 0 24px 0',
+                fontSize: '18px',
+                fontWeight: '600',
+                color: '#1f2937'
+              }}>Studying Alumni & Bursary Recipients</h3>
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center',
-                flex: '1',
-                minWidth: '300px'
+                alignItems: 'center'
               }}>
                 <BarChart 
                   data={{
@@ -1234,22 +1231,28 @@ export default function Home() {
                   Comparison of alumni currently studying vs. those with confirmed bursary funding
                 </div>
               </div>
-              
+            </div>
+
+            {/* Qualification Types Donut Chart */}
+            <div style={{
+              backgroundColor: 'white',
+              padding: '24px',
+              borderRadius: '12px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+              border: '1px solid #f3f4f6'
+            }}>
+              <h3 style={{
+                margin: '0 0 24px 0',
+                fontSize: '18px',
+                fontWeight: '600',
+                color: '#1f2937'
+              }}>Qualification Types</h3>
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                flex: '1',
-                minWidth: '400px', // Increased to accommodate external labels
                 padding: '20px' // Added padding to prevent label cutoff
               }}>
-                <h4 style={{
-                  margin: '0 0 16px 0',
-                  fontSize: '16px',
-                  fontWeight: '600',
-                  color: '#1f2937',
-                  textAlign: 'center'
-                }}>Qualification Types</h4>
                 {stats?.studyingQualifications && Object.keys(stats.studyingQualifications).length > 0 ? (
                   <DonutChart 
                     data={stats.studyingQualifications} 
