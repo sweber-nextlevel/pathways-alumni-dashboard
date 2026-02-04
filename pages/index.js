@@ -1097,7 +1097,7 @@ export default function Home() {
                       color: '#6b7280',
                       textAlign: 'center'
                     }}>
-                      Waffle Chart View
+                      Waffle Chart View (snapshot of 220 learners)
                     </div>
                   </div>
                 </div>
