@@ -1072,6 +1072,67 @@ export default function Home() {
       </Head>
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        /* Mobile-first responsive styles */
+        * {
+          box-sizing: border-box;
+        }
+        
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Ensure charts are responsive */
+        svg {
+          max-width: 100%;
+          height: auto;
+        }
+        
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+          nav {
+            padding: 8px 12px !important;
+          }
+          
+          nav h1 {
+            font-size: 18px !important;
+          }
+          
+          nav h2 {
+            font-size: 14px !important;
+            min-width: 150px !important;
+          }
+          
+          main {
+            padding: 12px !important;
+          }
+          
+          /* Force single column on small screens */
+          [data-grid="stats"] {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          
+          [data-grid="charts"] {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          nav div {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 4px !important;
+          }
+          
+          nav h1, nav h2 {
+            order: unset !important;
+            text-align: center !important;
+          }
+        }
       `}</style>
       <div style={{
         minHeight: '100vh',
@@ -1082,37 +1143,49 @@ export default function Home() {
         <nav style={{
           backgroundColor: 'white',
           borderBottom: '1px solid #e5e7eb',
-          padding: '16px 32px',
+          padding: '12px 16px',
           boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '8px'
+          }}>
             <h1 style={{
               margin: 0,
-              fontSize: '24px',
+              fontSize: 'clamp(18px, 4vw, 24px)',
               fontWeight: '600',
               color: '#1f2937',
-              fontFamily: '"Montserrat", sans-serif'
+              fontFamily: '"Montserrat", sans-serif',
+              order: 1
             }}>Pathways</h1>
             
             <h2 style={{
               margin: 0,
-              fontSize: '20px',
+              fontSize: 'clamp(14px, 3.5vw, 20px)',
               fontWeight: '600',
               color: '#1f2937',
               fontFamily: '"Montserrat", sans-serif',
-              textAlign: 'center'
+              textAlign: 'center',
+              order: 2,
+              flex: '1 1 auto',
+              minWidth: '200px'
             }}>CA STB Alumni Dashboard</h2>
             
             <div style={{ 
-              fontSize: '12px', 
+              fontSize: 'clamp(10px, 2vw, 12px)', 
               color: '#9ca3af', 
-              textAlign: 'right' 
+              textAlign: 'right',
+              order: 3,
+              whiteSpace: 'nowrap'
             }}>Updated at 03 February 2026</div>
           </div>
         </nav>
 
         {/* Main Content */}
-        <main style={{ padding: '32px' }}>
+        <main style={{ padding: 'clamp(16px, 4vw, 32px)' }}>
           {error && (
             <div style={{
               backgroundColor: '#fef2f2',
@@ -1127,11 +1200,13 @@ export default function Home() {
           )}
 
           {/* Stats Overview */}
-          <div style={{
+          <div 
+            data-grid="stats"
+            style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '24px',
-            marginBottom: '32px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+            gap: 'clamp(12px, 3vw, 24px)',
+            marginBottom: 'clamp(20px, 4vw, 32px)'
           }}>
             <div style={{
               backgroundColor: 'white',
@@ -1150,7 +1225,7 @@ export default function Home() {
               }}>Total Alumni</h3>
               <p style={{
                 margin: 0,
-                fontSize: '32px',
+                fontSize: 'clamp(24px, 6vw, 32px)',
                 fontWeight: '700',
                 color: '#1f2937'
               }}>{stats?.total || 0}</p>
@@ -1158,10 +1233,11 @@ export default function Home() {
 
             <div style={{
               backgroundColor: 'white',
-              padding: '24px',
+              padding: 'clamp(16px, 4vw, 24px)',
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-              border: '1px solid #f3f4f6'
+              border: '1px solid #f3f4f6',
+              textAlign: 'center'
             }}>
               <h3 style={{
                 margin: '0 0 8px 0',
@@ -1173,7 +1249,7 @@ export default function Home() {
               }}>Cohorts</h3>
               <p style={{
                 margin: 0,
-                fontSize: '32px',
+                fontSize: 'clamp(24px, 6vw, 32px)',
                 fontWeight: '700',
                 color: '#1f2937'
               }}>{Object.keys(stats?.cohorts || {}).length}</p>
@@ -1181,11 +1257,13 @@ export default function Home() {
           </div>
 
           {/* Charts Grid */}
-          <div style={{
+          <div 
+            data-grid="charts"
+            style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-            gap: '24px',
-            marginBottom: '32px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+            gap: 'clamp(12px, 3vw, 24px)',
+            marginBottom: 'clamp(20px, 4vw, 32px)'
           }}>
             {/* Activity Distribution */}
             <div style={{
@@ -1204,7 +1282,7 @@ export default function Home() {
               {stats?.activities && Object.keys(stats.activities).length > 0 ? (
                 <div style={{
                   display: 'flex',
-                  gap: '32px',
+                  gap: 'clamp(16px, 4vw, 32px)',
                   alignItems: 'flex-start',
                   justifyContent: 'center',
                   flexWrap: 'wrap'
@@ -1272,11 +1350,11 @@ export default function Home() {
           {/* Activity Distribution by Cohort */}
           <div style={{
             backgroundColor: 'white',
-            padding: '24px',
+            padding: 'clamp(16px, 4vw, 24px)',
             borderRadius: '12px',
             boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
             border: '1px solid #f3f4f6',
-            marginTop: '32px'
+            marginTop: 'clamp(24px, 4vw, 32px)'
           }}>
             <h3 style={{
               margin: '0 0 24px 0',
@@ -1287,8 +1365,8 @@ export default function Home() {
             {stats?.cohortActivities && Object.keys(stats.cohortActivities).length > 0 ? (
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                gap: '24px'
+                gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                gap: 'clamp(16px, 3vw, 24px)'
               }}>
                 {Object.entries(stats.cohortActivities)
                   .sort(([a], [b]) => a.localeCompare(b)) // Sort cohorts alphabetically
@@ -1296,7 +1374,7 @@ export default function Home() {
                   <div key={cohort} style={{
                     border: '1px solid #e5e7eb',
                     borderRadius: '8px',
-                    padding: '20px',
+                    padding: 'clamp(12px, 3vw, 20px)',
                     backgroundColor: '#fafbfc'
                   }}>
                     <h4 style={{
@@ -1333,14 +1411,14 @@ export default function Home() {
           {/* Studying vs Bursary Comparison - Split into two separate containers */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-            gap: '24px',
-            marginTop: '32px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: 'clamp(16px, 3vw, 24px)',
+            marginTop: 'clamp(24px, 4vw, 32px)'
           }}>
             {/* Studying vs Bursary Bar Chart */}
             <div style={{
               backgroundColor: 'white',
-              padding: '24px',
+              padding: 'clamp(16px, 4vw, 24px)',
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
               border: '1px solid #f3f4f6'
@@ -1377,7 +1455,7 @@ export default function Home() {
             {/* Qualification Types Donut Chart */}
             <div style={{
               backgroundColor: 'white',
-              padding: '24px',
+              padding: 'clamp(16px, 4vw, 24px)',
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
               border: '1px solid #f3f4f6'
@@ -1418,14 +1496,14 @@ export default function Home() {
           {/* Alumni Projections - Split into two separate containers */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-            gap: '24px',
-            marginTop: '32px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: 'clamp(16px, 3vw, 24px)',
+            marginTop: 'clamp(24px, 4vw, 32px)'
           }}>
             {/* Alumni Growth Line Chart */}
             <div style={{
               backgroundColor: 'white',
-              padding: '24px',
+              padding: 'clamp(16px, 4vw, 24px)',
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
               border: '1px solid #f3f4f6'
@@ -1460,7 +1538,7 @@ export default function Home() {
             {/* Projected Alumni by Campus */}
             <div style={{
               backgroundColor: 'white',
-              padding: '24px',
+              padding: 'clamp(16px, 4vw, 24px)',
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
               border: '1px solid #f3f4f6'
