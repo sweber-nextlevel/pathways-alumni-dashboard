@@ -17,100 +17,95 @@ export default function Home() {
         console.log('Fetched learners:', learners.length, learners);
         setLearners(learners);
           
-          // Calculate stats
-          const activities = {};
-          const cohorts = {};
-          const cohortActivities = {}; // New: activities breakdown per cohort
-          let studyingCount = 0;
-          let bursaryCount = 0;
+        // Calculate stats
+        const activities = {};
+        const cohorts = {};
+        const cohortActivities = {}; // New: activities breakdown per cohort
+        let studyingCount = 0;
+        let bursaryCount = 0;
+        
+        learners.forEach(l => {
+          const activity = l.current_activity_type || 'Unknown';
+          const cohort = l.cohort || l.cohort_year || 'Unknown';
           
-          learners.forEach(l => {
-            const activity = l.current_activity_type || 'Unknown';
-            const cohort = l.cohort || l.cohort_year || 'Unknown';
-            
-            // Simple bursary check - only check the main field since duplicates are a processing error
-            const hasBursary = l.has_bursary === 'True';
-            
-            // Overall activity count
-            activities[activity] = (activities[activity] || 0) + 1;
-            
-            // Overall cohort count
-            cohorts[cohort] = (cohorts[cohort] || 0) + 1;
-            
-            // Activity breakdown per cohort
-            if (!cohortActivities[cohort]) {
-              cohortActivities[cohort] = {};
+          // Simple bursary check - only check the main field since duplicates are a processing error
+          const hasBursary = l.has_bursary === 'True';
+          
+          // Overall activity count
+          activities[activity] = (activities[activity] || 0) + 1;
+          
+          // Overall cohort count
+          cohorts[cohort] = (cohorts[cohort] || 0) + 1;
+          
+          // Activity breakdown per cohort
+          if (!cohortActivities[cohort]) {
+            cohortActivities[cohort] = {};
+          }
+          cohortActivities[cohort][activity] = (cohortActivities[cohort][activity] || 0) + 1;
+          
+          // Count studying students and those with bursaries
+          if (activity.toLowerCase().includes('studying')) {
+            studyingCount++;
+          }
+          if (hasBursary) {
+            bursaryCount++;
+          }
+        });
+        
+        // Calculate alumni projections data
+        const actualAlumniData = [
+          { year: 2022, value: 53 },
+          { year: 2023, value: 104 }, // 53 + 51
+          { year: 2024, value: 163 }, // 104 + 59  
+          { year: 2025, value: 226 }  // 163 + 63 (current total)
+        ];
+        
+        const projectedAlumniData = [
+          { year: 2026, value: 346 }, // 226 + 120
+          { year: 2027, value: 526 }, // 346 + 180
+          { year: 2028, value: 706 }, // 526 + 180
+          { year: 2029, value: 886 }, // 706 + 180
+          { year: 2030, value: 1066 } // 886 + 180
+        ];
+        
+        // Calculate studying qualifications breakdown
+        const studyingQualifications = {};
+        learners.forEach(l => {
+          const activity = l.current_activity_type || 'Unknown';
+          const qualification = l.qualification_type || '';
+          
+          if (activity.toLowerCase().includes('studying')) {
+            // Group qualifications into 3 categories
+            let groupedQual;
+            if (qualification.toLowerCase().includes('degree')) {
+              groupedQual = 'Degree';
+            } else if (qualification.toLowerCase().includes('diploma') || 
+                      qualification.toLowerCase().includes('certificate')) {
+              groupedQual = 'Diploma/Certificate';
+            } else {
+              groupedQual = 'Other';
             }
-            cohortActivities[cohort][activity] = (cohortActivities[cohort][activity] || 0) + 1;
             
-            // Count studying students and those with bursaries
-            if (activity.toLowerCase().includes('studying')) {
-              studyingCount++;
-            }
-            if (hasBursary) {
-              bursaryCount++;
-            }
-          });
-          
-          // Calculate alumni projections data
-          const actualAlumniData = [
-            { year: 2022, value: 53 },
-            { year: 2023, value: 104 }, // 53 + 51
-            { year: 2024, value: 163 }, // 104 + 59  
-            { year: 2025, value: 226 }  // 163 + 63 (current total)
-          ];
-          
-          const projectedAlumniData = [
-            { year: 2026, value: 346 }, // 226 + 120
-            { year: 2027, value: 526 }, // 346 + 180
-            { year: 2028, value: 706 }, // 526 + 180
-            { year: 2029, value: 886 }, // 706 + 180
-            { year: 2030, value: 1066 } // 886 + 180
-          ];
-          
-          // Calculate studying qualifications breakdown
-          const studyingQualifications = {};
-          learners.forEach(l => {
-            const activity = l.current_activity_type || 'Unknown';
-            const qualification = l.qualification_type || '';
-            
-            if (activity.toLowerCase().includes('studying')) {
-              // Group qualifications into 3 categories
-              let groupedQual;
-              if (qualification.toLowerCase().includes('degree')) {
-                groupedQual = 'Degree';
-              } else if (qualification.toLowerCase().includes('diploma') || 
-                        qualification.toLowerCase().includes('certificate')) {
-                groupedQual = 'Diploma/Certificate';
-              } else {
-                groupedQual = 'Other';
-              }
-              
-              studyingQualifications[groupedQual] = (studyingQualifications[groupedQual] || 0) + 1;
-            }
-          });
-          
-          const newStats = { 
-            activities, 
-            cohorts,
-            cohortActivities,
-            studyingQualifications,
-            total: learners.length,
-            studyingCount,
-            bursaryCount,
-            actualAlumniData,
-            projectedAlumniData
-          };
-          console.log('Calculated stats:', newStats);
-          setStats(newStats);
-          return;
-        } catch(e) {
-          console.log('API failed:', e);
-          setError('Failed to fetch learners from API');
-        }
+            studyingQualifications[groupedQual] = (studyingQualifications[groupedQual] || 0) + 1;
+          }
+        });
+        
+        const newStats = { 
+          activities, 
+          cohorts,
+          cohortActivities,
+          studyingQualifications,
+          total: learners.length,
+          studyingCount,
+          bursaryCount,
+          actualAlumniData,
+          projectedAlumniData
+        };
+        console.log('Calculated stats:', newStats);
+        setStats(newStats);
       } catch(e) {
-        console.log('Backend failed:', e);
-        setError('Failed to fetch learners from backend');
+        console.log('API failed:', e);
+        setError('Failed to fetch learners from API');
       }
     };
     tryFetch();
