@@ -125,6 +125,17 @@ export default function Home() {
     const defaultColors = ['#FBBF24', '#F9A8D4', '#FB7185', '#C4B5FD', '#A7F3D0', '#FED7AA'];
     return defaultColors[Math.abs(activity.charCodeAt(0) || 0) % defaultColors.length];
   };
+
+  // Campus-specific color mapping for modern professional look
+  const getCampusColor = (campusName) => {
+    const campus = (campusName || '').toUpperCase();
+    if (campus === 'STB') return '#60A5FA'; // Modern sky blue - main campus
+    if (campus === 'KRN') return '#34D399'; // Modern mint green - new campus
+    if (campus === 'PRL') return '#FBBF24'; // Modern warm amber - new campus
+    // Default modern pastels for any additional campuses
+    const campusColors = ['#A78BFA', '#F87171', '#FB7185', '#C4B5FD'];
+    return campusColors[Math.abs(campus.charCodeAt(0) || 0) % campusColors.length];
+  };
   
   // Donut Chart Component - like pie chart but with hollow center
   const DonutChart = ({ data, title, centerText }) => {
@@ -508,13 +519,13 @@ export default function Home() {
   };
 
   // Simple Pie Chart Component with labels on segments and tooltips
-  const PieChart = ({ data, title, showNumbers = false }) => {
+  const PieChart = ({ data, title, showNumbers = false, colorFunction = null }) => {
     const [tooltip, setTooltip] = useState({ show: false, x: 0, y: 0, content: '' });
     const total = Object.values(data).reduce((a, b) => a + b, 0);
     if (total === 0) return <div>No data available</div>;
     
-    // Get sorted activities for consistent ordering
-    const sortedEntries = getSortedActivities(data);
+    // Get sorted activities for consistent ordering (skip sorting for campus data)
+    const sortedEntries = colorFunction === getCampusColor ? Object.entries(data) : getSortedActivities(data);
     
     let currentAngle = 0;
     const radius = 80;
@@ -569,7 +580,7 @@ export default function Home() {
               <g key={label}>
                 <path
                   d={pathData}
-                  fill={getActivityColor(label)}
+                  fill={colorFunction ? colorFunction(label) : getActivityColor(label)}
                   stroke="white"
                   strokeWidth="2"
                   style={{ cursor: 'pointer' }}
@@ -708,11 +719,13 @@ export default function Home() {
     const maxValue = Math.max(...Object.values(data));
     if (maxValue === 0) return <div>No data available</div>;
     
-    // Modern pastel colors for studying vs bursary comparison
+    // Modern pastel colors for studying vs bursary comparison and cohort charts
     const getBarColor = (label) => {
       if (label === 'Currently Studying') return '#60A5FA'; // Modern sky blue
       if (label === 'Have Bursaries') return '#34D399'; // Modern mint green
-      return pastelColors[Object.keys(data).indexOf(label) % pastelColors.length];
+      // For cohort charts, use the modern pastel array
+      const modernPastels = ['#60A5FA', '#34D399', '#FBBF24', '#A78BFA', '#F87171', '#FB7185'];
+      return modernPastels[Object.keys(data).indexOf(label) % modernPastels.length];
     };
     
     return (
@@ -966,7 +979,10 @@ export default function Home() {
               color: '#1f2937',
               fontFamily: '"Montserrat", sans-serif'
             }}>Pathways</h1>
-            <div style={{ fontSize: '14px', color: '#6b7280' }}>CA STB Alumni Dashboard</div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+              <div style={{ fontSize: '14px', color: '#6b7280' }}>CA STB Alumni Dashboard</div>
+              <div style={{ fontSize: '12px', color: '#9ca3af', marginTop: '2px' }}>Updated at 03 February 2026</div>
+            </div>
           </div>
         </nav>
 
@@ -1343,6 +1359,7 @@ export default function Home() {
                   }}
                   title=""
                   showNumbers={true}
+                  colorFunction={getCampusColor}
                 />
                 <div style={{
                   marginTop: '16px',
