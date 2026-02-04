@@ -111,18 +111,18 @@ export default function Home() {
     tryFetch();
   }, [])
 
-  const pastelColors = ['#FFB6C1', '#DDA0DD', '#98FB98', '#F0E68C', '#87CEEB', '#FFA07A'];
+  const pastelColors = ['#A7F3D0', '#DBEAFE', '#FDE68A', '#E0E7FF', '#FECACA', '#FED7AA'];
   
-  // Activity-specific color mapping
+  // Activity-specific color mapping - Modern Pastel Professional Palette
   const getActivityColor = (activityType) => {
     const activity = (activityType || '').toLowerCase();
-    if (activity.includes('employed') && !activity.includes('unemployed')) return '#98FB98'; // Green - employed but not unemployed
-    if (activity.includes('studying')) return '#87CEEB'; // Blue
-    if (activity.includes('internship')) return '#F0E68C'; // Pastel Yellow
-    if (activity.includes('tbc') || activity.includes('to be confirmed')) return '#DDA0DD'; // Purple
-    if (activity.includes('unemployed') || activity === 'unemployed') return '#FF69B4'; // Hot Pink/Red
-    // Default colors for other activities
-    const defaultColors = ['#F0E68C', '#FFB6C1', '#FFA07A', '#E6E6FA', '#F0F8FF', '#FFEFD5'];
+    if (activity.includes('employed') && !activity.includes('unemployed')) return '#34D399'; // Modern mint green - employed
+    if (activity.includes('studying')) return '#60A5FA'; // Modern sky blue - studying  
+    if (activity.includes('internship')) return '#FBBF24'; // Modern warm amber - internship
+    if (activity.includes('tbc') || activity.includes('to be confirmed')) return '#A78BFA'; // Modern lavender - TBC
+    if (activity.includes('unemployed') || activity === 'unemployed') return '#F87171'; // Modern coral red - unemployed
+    // Default colors for other activities - harmonious modern pastels
+    const defaultColors = ['#FBBF24', '#F9A8D4', '#FB7185', '#C4B5FD', '#A7F3D0', '#FED7AA'];
     return defaultColors[Math.abs(activity.charCodeAt(0) || 0) % defaultColors.length];
   };
   
@@ -137,13 +137,13 @@ export default function Home() {
     const innerRadius = 40; // Creates the donut hole
     const center = 100;
     
-    // Colors for qualifications - matching the activity chart colors
+    // Colors for qualifications - Modern pastel palette matching activity colors
     const getQualificationColor = (qualification) => {
       const qual = (qualification || '').toLowerCase();
-      if (qual.includes('degree')) return '#87CEEB'; // Blue (like studying)
-      if (qual.includes('diploma') || qual.includes('certificate')) return '#98FB98'; // Green (like employed)
-      if (qual.includes('other')) return '#F0E68C'; // Pastel Yellow (like internship)
-      return '#DDA0DD'; // Purple (like TBC)
+      if (qual.includes('degree')) return '#60A5FA'; // Modern sky blue (like studying)
+      if (qual.includes('diploma') || qual.includes('certificate')) return '#34D399'; // Modern mint green (like employed)
+      if (qual.includes('other')) return '#FBBF24'; // Modern warm amber (like internship)
+      return '#A78BFA'; // Modern lavender (like TBC)
     };
     
     const handleMouseEnter = (e, label, value, percentage) => {
@@ -708,10 +708,10 @@ export default function Home() {
     const maxValue = Math.max(...Object.values(data));
     if (maxValue === 0) return <div>No data available</div>;
     
-    // Special colors for studying vs bursary comparison
+    // Modern pastel colors for studying vs bursary comparison
     const getBarColor = (label) => {
-      if (label === 'Currently Studying') return '#87CEEB'; // Blue
-      if (label === 'Have Bursaries') return '#98FB98'; // Green
+      if (label === 'Currently Studying') return '#60A5FA'; // Modern sky blue
+      if (label === 'Have Bursaries') return '#34D399'; // Modern mint green
       return pastelColors[Object.keys(data).indexOf(label) % pastelColors.length];
     };
     
@@ -816,7 +816,7 @@ export default function Home() {
             <path
               d={actualPath}
               fill="none"
-              stroke="#3b82f6"
+              stroke="#60A5FA"
               strokeWidth="3"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -826,7 +826,7 @@ export default function Home() {
             <path
               d={connectedProjectedPath}
               fill="none"
-              stroke="#10b981"
+              stroke="#34D399"
               strokeWidth="3"
               strokeDasharray="8,4"
               strokeLinecap="round"
@@ -841,7 +841,7 @@ export default function Home() {
                   cy={yScale(d.value)}
                   r="5"
                   fill="white"
-                  stroke="#3b82f6"
+                  stroke="#60A5FA"
                   strokeWidth="3"
                 />
                 <text
@@ -865,7 +865,7 @@ export default function Home() {
                   cy={yScale(d.value)}
                   r="5"
                   fill="white"
-                  stroke="#10b981"
+                  stroke="#34D399"
                   strokeWidth="3"
                 />
                 <text
@@ -925,12 +925,12 @@ export default function Home() {
             <rect x="-10" y="-10" width="140" height="50" fill="white" 
                   stroke="#e5e7eb" strokeWidth="1" rx="6" opacity="0.95"/>
             
-            <circle cx="5" cy="5" r="4" fill="#3b82f6"/>
-            <line x1="1" y1="5" x2="9" y2="5" stroke="#3b82f6" strokeWidth="2"/>
+            <circle cx="5" cy="5" r="4" fill="#60A5FA"/>
+            <line x1="1" y1="5" x2="9" y2="5" stroke="#60A5FA" strokeWidth="2"/>
             <text x="15" y="9" fontSize="12" fill="#1f2937" fontWeight="500">Actual</text>
             
-            <circle cx="5" cy="25" r="4" fill="#10b981"/>
-            <line x1="1" y1="25" x2="9" y2="25" stroke="#10b981" strokeWidth="2" strokeDasharray="4,2"/>
+            <circle cx="5" cy="25" r="4" fill="#34D399"/>
+            <line x1="1" y1="25" x2="9" y2="25" stroke="#34D399" strokeWidth="2" strokeDasharray="4,2"/>
             <text x="15" y="29" fontSize="12" fill="#1f2937" fontWeight="500">Projected</text>
           </g>
         </svg>
