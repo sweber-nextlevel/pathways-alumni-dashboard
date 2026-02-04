@@ -6,10 +6,10 @@ export default function Home() {
   const [error, setError] = useState(null)
   const [stats, setStats] = useState({ total: 0, activities: {}, cohorts: {} })
 
-  useEffect(()=>{
+  useEffect(() => {
     // Fetch data from API route for deployment
-    const tryFetch = async ()=>{
-      try{
+    const tryFetch = async () => {
+      try {
         const r = await fetch('/api/learners');
         if (!r.ok) throw new Error(await r.text());
         const j = await r.json();
@@ -112,7 +112,7 @@ export default function Home() {
         console.log('Backend failed:', e);
         setError('Failed to fetch learners from backend');
       }
-    }
+    };
     tryFetch();
   }, [])
 
