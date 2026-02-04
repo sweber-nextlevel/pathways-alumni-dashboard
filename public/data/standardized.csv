@@ -1,0 +1,228 @@
+alumid,campus,cohort_year,name,prefered_name,surname,gender,date_of_birth,primary_phone,email,home_area,province,current_activity_type,has_graduated,employment_status,has_bursary,qualification_type,course,institution,employer_name,employment_sector,source_sheet
+STB-000001,STB,2022,CUMMINGS,,KHWEZI,M,,,,,Western Cape,Studying,False,,False,Degree,,,,,2022 Alumni
+STB-000002,STB,2022,LOUW,,LIAM,M,,,,,Western Cape,Studying,False,,False,Degree,,,,,2022 Alumni
+STB-000003,STB,2022,ROBERTSON,,LEO,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000004,STB,2022,GABRIELS,,AIDEN,M,,,,,Western Cape,Studying,False,,True,Degree,,,,,2022 Alumni
+STB-000005,STB,2022,SINZUMUSI,,AHMED,M,,,,,Western Cape,Studying,False,,True,Degree,,,,,2022 Alumni
+STB-000006,STB,2022,HECTOR,,JORDAN,M,,,,,Western Cape,Internship,False,,False,,,,,,2022 Alumni
+STB-000007,STB,2022,ABRAHAMS,,JAMIE,M,,,,,Western Cape,Studying,False,,False,,,,,,2022 Alumni
+STB-000008,STB,2022,DU PLESSIS,,KEAGAN,M,,,,,Western Cape,Studying,False,,False,,,,,,2022 Alumni
+STB-000009,STB,2022,BICKERSTAFF,,YAQOOB,M,,,,,Western Cape,Studying,False,,False,Diploma,,,,,2022 Alumni
+STB-000010,STB,2022,KHATI,,ATANG,M,,,,,Western Cape,Studying,False,,False,,,,,,2022 Alumni
+STB-000011,STB,2022,ISAACS,,JORDAN,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2022 Alumni
+STB-000012,STB,2022,SITHOLE,,CLYDE,M,,,,,Western Cape,Studying,False,,False,,,,,,2022 Alumni
+STB-000013,STB,2022,HARRIS,,IEMAAD,M,,,,,Western Cape,Studying,False,,True,Degree,,,,,2022 Alumni
+STB-000014,STB,2022,BOOYSEN,,NEALLEN,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000015,STB,2022,TIMOTHEUS,,JUNIOR,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000016,STB,2022,VANTYOLO,,NKAZIMLO,M,,,,,Western Cape,Internship,False,,False,,,,,,2022 Alumni
+STB-000017,STB,2022,JAAP,,MATTHEW,M,,,,,Western Cape,Internship,False,,False,,,,,,2022 Alumni
+STB-000018,STB,2022,MOKOENA,,MAPHUTA,M,,,,,Western Cape,TBC,False,,False,,,,,,2022 Alumni
+STB-000019,STB,2022,KABASELE,,GARNET,M,,,,,Western Cape,Studying,False,,False,,,,,,2022 Alumni
+STB-000020,STB,2022,GWAKA,,RAYMOND,M,,,,,Western Cape,Studying,False,,False,Degree,,,,,2022 Alumni
+STB-000021,STB,2022,WYNGAARDT,,ROBIN,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2022 Alumni
+STB-000022,STB,2022,SIEBRITZ,,CHANDLER,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2022 Alumni
+STB-000023,STB,2022,NTSHOKOLWANA,,RORISANG,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2022 Alumni
+STB-000024,STB,2022,GROENEWALD,,AUSTIN,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000025,STB,2022,GERTZE,,DIEGO,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000026,STB,2022,KANDE,,JEAN-MARC,M,,,,,Western Cape,Studying,False,,False,,,,,,2022 Alumni
+STB-000027,STB,2022,YAKO,,NHLANHLA,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000028,STB,2022,VAN DER MERWE,,COLE,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2022 Alumni
+STB-000029,STB,2022,SNYMAN,,MIHLALI,M,,,,,Western Cape,TBC,False,,False,,,,,,2022 Alumni
+STB-000030,STB,2022,MPINO,,KANYILE,M,,,,,Western Cape,Studying,False,,False,,,,,,2022 Alumni
+STB-000031,STB,2022,LUPHALULE,,HLUMA,M,,,,,Western Cape,Studying,False,,True,Degree,,,,,2022 Alumni
+STB-000032,STB,2022,BIXA,,ZIPHO,M,,,,,Western Cape,TBC,False,,False,,,,,,2022 Alumni
+STB-000033,STB,2022,VAN KERWEL,,LEE,M,,,,,Western Cape,TBC,False,,False,,,,,,2022 Alumni
+STB-000034,STB,2022,PHIRI,,NOAH,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000035,STB,2022,CARSTENS,,LIONEL,M,,,,,Western Cape,TBC,False,,False,,,,,,2022 Alumni
+STB-000036,STB,2022,VISAGIE,,JORDAN,M,,,,,Western Cape,Studying,False,,True,,,,,,2022 Alumni
+STB-000037,STB,2022,MADOLO,,SIYOLISE,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000038,STB,2022,NODUMO,,LISAKHANYA,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000039,STB,2022,RUKA,,MPILONTLE,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000040,STB,2022,HEXANA,,ZUKISANI,M,,,,,Western Cape,TBC,False,,False,,,,,,2022 Alumni
+STB-000041,STB,2022,DUMALISILE,,DANIEL,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000042,STB,2022,NONTSHIZA,,LUKHANYO,M,,,,,Western Cape,TBC,False,,False,,,,,,2022 Alumni
+STB-000043,STB,2022,FULLER,,KEANU,M,,,,,Western Cape,TBC,False,,False,,,,,,2022 Alumni
+STB-000044,STB,2022,GABASE,,MZAMO,M,,,,,Western Cape,Studying,False,,False,,,,,,2022 Alumni
+STB-000045,STB,2022,ANDRIES,,ALLAN,M,,,,,Western Cape,TBC,False,,False,,,,,,2022 Alumni
+STB-000046,STB,2022,JANUARY,,LUHLE,M,,,,,Western Cape,Studying,False,,False,,,,,,2022 Alumni
+STB-000047,STB,2022,BEJA,,BOTHO,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000048,STB,2022,DAVIDS,,BRANDWIN,M,,,,,Western Cape,TBC,False,,False,,,,,,2022 Alumni
+STB-000049,STB,2022,ARENDS,,DAANISH,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000050,STB,2022,MRALI,,SIVE,M,,,,,Western Cape,Studying,False,,True,,,,,,2022 Alumni
+STB-000051,STB,2022,LUPONDO,,QHAMA,M,,,,,Western Cape,Studying,False,,False,,,,,,2022 Alumni
+STB-000052,STB,2022,NOBUMBA,,LILITHA,M,,,,,Western Cape,Studying,False,,False,,,,,,2022 Alumni
+STB-000053,STB,2022,MABUTO,,LINDANI,M,,,,,Western Cape,TBC,False,,False,,,,,,2022 Alumni
+STB-000054,STB,2022,BULANE,,KATLEHO,M,,,,,Western Cape,Employed,False,,False,,,,,,2022 Alumni
+STB-000055,STB,2023,APRIL,,VINCHENZO,M,,,,,,TBC,False,,False,Degree,Engineering,SU,,,2023 Alumni
+STB-000056,STB,2023,JINDELA,,LUVO,M,,,,,Western Cape,Studying,False,,False,Degree,Humanities,UCT,,,2023 Alumni
+STB-000057,STB,2023,WAPI,,MIHLE,M,,,,,Western Cape,Studying,False,,False,Degree,Finance,UCT,,,2023 Alumni
+STB-000058,STB,2023,MEYER,,JORDAN,M,,,,,Western Cape,Studying,False,,,,,,,,2023 Alumni
+STB-000059,STB,2023,DANIELS,,KAYLUM,M,,,,,Western Cape,Studying,False,,,Certificate,IT / Cybersecurity,Other,,,2023 Alumni
+STB-000060,STB,2023,MDODA,,LISA,M,,,,,Western Cape,Studying,False,,,Diploma,Engineering,CPUT,,,2023 Alumni
+STB-000061,STB,2023,MALAHLEKANA,,VUYO,M,,,,,Western Cape,Studying,False,,,Degree,IT,UWC,,,2023 Alumni
+STB-000062,STB,2023,BOESAK,,OYAMA,M,,,,,Western Cape,Studying,False,,,Degree,Finance,SU,,,2023 Alumni
+STB-000063,STB,2023,PATU,,ALITHA,M,,,,,Western Cape,Studying,False,,,Degree,Humanities,UWC,,,2023 Alumni
+STB-000064,STB,2023,MEZICHEL,,ADAM,M,,,,,Western Cape,Studying,False,,,Certificate,IT / Programming,Other,,,2023 Alumni
+STB-000065,STB,2023,STEMELE,,AXOLA,M,,,,,Western Cape,Studying,False,,,Degree,Finance,UWC,,,2023 Alumni
+STB-000066,STB,2023,NDZINGANI,,BANOYOLO,M,,,,,Western Cape,Studying,False,,,Diploma,Media / Journalism,CPUT,,,2023 Alumni
+STB-000067,STB,2023,LINDA,,LUZUKO,M,,,,,Western Cape,Studying,False,,,Other,Logistics / Employment,Other,,,2023 Alumni
+STB-000068,STB,2023,NAIKER,,LIAM,M,,,,,Western Cape,Studying,False,,,,,,,,2023 Alumni
+STB-000069,STB,2023,MYABE,,JUNIOR,M,,,,,Western Cape,TBC,False,,,Other,Retail / Employment,Other,,,2023 Alumni
+STB-000070,STB,2023,ABRAHAMS,,BASHEER,M,,,,,Western Cape,Internship,False,,,,,,,,2023 Alumni
+STB-000071,STB,2023,ARNOLDS,,AASHIQ,M,,,,,Western Cape,Studying,False,,,Diploma,Business,CPUT,,,2023 Alumni
+STB-000072,STB,2023,MAKHETHA,,HLONOLOFATSO,M,,,,,Western Cape,Studying,False,,,Other,Education / Employment,Other,,,2023 Alumni
+STB-000073,STB,2023,SMITH,,ADEN,M,,,,,Western Cape,Studying,False,,,Degree,Theology,SU,,,2023 Alumni
+STB-000074,STB,2023,MATTA,,KWANDA,M,,,,,Western Cape,Studying,False,,,Degree,Education,Other,,,2023 Alumni
+STB-000075,STB,2023,MWEZENI,,KHANYA,M,,,,,Western Cape,Studying,False,,,Degree,Theology,SU,,,2023 Alumni
+STB-000076,STB,2023,AFRICA,,LUKE,M,,,,,Western Cape,Studying,False,,,Certificate,Arts & Design,Other,,,2023 Alumni
+STB-000077,STB,2023,GXILISHE,,ZAMA,M,,,,,Western Cape,Unemployed,False,,,Certificate,Finance,Other,,,2023 Alumni
+STB-000078,STB,2023,JACK,,SIBABALWE,M,,,,,Western Cape,TBC,False,,,,,,,,2023 Alumni
+STB-000079,STB,2023,BROOKS,,MIANO,M,,,,,Western Cape,Studying,False,,,Certificate,Business,Other,,,2023 Alumni
+STB-000080,STB,2023,NGQOBA,,MBASA,M,,,,,Western Cape,Studying,False,,,Diploma,Real Estate,CPUT,,,2023 Alumni
+STB-000081,STB,2023,GCUKU,,MAKHI,M,,,,,Western Cape,Studying,False,,,Degree,Business / Transport,Other,,,2023 Alumni
+STB-000082,STB,2023,MOSES,,ROMAN,M,,,,,Western Cape,Employed,False,,,Certificate,Theology / Discipleship,Other,,,2023 Alumni
+STB-000083,STB,2023,NYOBOLE,,LETHU,M,,,,,Western Cape,Studying,False,,,Certificate,Health & Safety,Other,,,2023 Alumni
+STB-000084,STB,2023,PAULSEN,,KYLLE,M,,,,,Western Cape,Employed,False,,,Other,Automotive / Employment,,,,2023 Alumni
+STB-000085,STB,2023,FEBRUARIE,,DYLAN,M,,,,,Western Cape,Studying,False,,,Certificate,IT / Cybersecurity,Other,,,2023 Alumni
+STB-000086,STB,2023,CROUCH,,ZEATHAN,M,,,,,Western Cape,TBC,False,,,Other,Migration / Planning,,,,2023 Alumni
+STB-000087,STB,2023,KIIRU,,KEVIN,M,,,,,Western Cape,TBC,False,,,Certificate,IT / Information Systems,Other,,,2023 Alumni
+STB-000088,STB,2023,NKOKO,,JOEL,M,,,,,Western Cape,Studying,False,,,Degree,International Studies,Other,,,2023 Alumni
+STB-000089,STB,2023,MAVUMBA-ZIBI,,AMAHLÉ,M,,,,,Western Cape,Studying,False,,,,,,,,2023 Alumni
+STB-000090,STB,2023,LEITH,,CHADLEY,M,,,,,Western Cape,Unemployed,False,,,Degree,Music / Arts,SU,,,2023 Alumni
+STB-000091,STB,2023,MANUEL,,REAGAN,M,,,,,Western Cape,TBC,False,,,Other,Migration,,,,2023 Alumni
+STB-000092,STB,2023,KANDAWASVIKA,,MUNASHE,M,,,,,Western Cape,TBC,False,,,,,,,,2023 Alumni
+STB-000093,STB,2023,LUPONDO,,ALIZWA,M,,,,,Western Cape,Employed,False,,,,,,,,2023 Alumni
+STB-000094,STB,2023,KELLY,,ROSWIN,M,,,,,Western Cape,TBC,False,,,,,,,,2023 Alumni
+STB-000095,STB,2023,MOHAMUD,,KHALID,M,,,,,Western Cape,TBC,False,,,Other,Gap Year / Education Prep,,,,2023 Alumni
+STB-000096,STB,2023,WOKO,,KHANYA,M,,,,,Western Cape,TBC,False,,,Other,Real Estate / Employment,Other,,,2023 Alumni
+STB-000097,STB,2023,KOKOLO,,SITHANDILE,M,,,,,Western Cape,TBC,False,,,Diploma,Sports Management,Other,,,2023 Alumni
+STB-000098,STB,2023,MCOSO,,GCOBANI,M,,,,,Western Cape,TBC,False,,,Certificate,Health / Sport Therapy,Other,,,2023 Alumni
+STB-000099,STB,2023,STUURMAN,,IVIWE,M,,,,,Western Cape,TBC,False,,,Certificate,Theology / Discipleship,Other,,,2023 Alumni
+STB-000100,STB,2023,MICHAELS,,XAVIER,M,,,,,Western Cape,Unemployed,False,,,,,,,,2023 Alumni
+STB-000101,STB,2023,CUBE,,APHELELE,M,,,,,Western Cape,TBC,False,,,,,,,,2023 Alumni
+STB-000102,STB,2023,NKUNZI,,LULUTHO,M,,,,,Western Cape,TBC,False,,,,,,,,2023 Alumni
+STB-000103,STB,2023,MTHINI,,AZILE,M,,,,,Western Cape,TBC,False,,,,,,,,2023 Alumni
+STB-000104,STB,2023,XAXA,,TAFADZWA,M,,,,,Western Cape,Employed,False,,,,,,,,2023 Alumni
+STB-000105,STB,2023,TSHANGELA,,EZRA,M,,,,,Western Cape,TBC,False,,,,,,,,2023 Alumni
+STB-000106,STB,2023,ADRIAANSE,,CELENTO,M,,,,,Western Cape,TBC,False,,,,,,,,2023 Alumni
+STB-000107,STB,2024,JALISA,,GUGULETHU,M,,,,,Western Cape,Studying,False,,True,Degree,Computer Science,SU,,,2024 Alumni
+STB-000108,STB,2024,LE ROUX,,JAIMI,M,,,,,Western Cape,Studying,False,,False,Degree,,,,,2024 Alumni
+STB-000109,STB,2024,VAN ROOYEN,,LUCIAN,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2024 Alumni
+STB-000110,STB,2024,ONTONG,,FADIL,M,,,,,Western Cape,Studying,False,,True,Degree,,,,,2024 Alumni
+STB-000111,STB,2024,MAKALIMA,,SIBULELE,M,,,,,Western Cape,Studying,False,,False,Degree,,,,,2024 Alumni
+STB-000112,STB,2024,PASQUALLIE,,LIAM,M,,,,,Western Cape,Internship,False,,False,Other,,,,,2024 Alumni
+STB-000113,STB,2024,NEWMAN,,JOSHUA,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2024 Alumni
+STB-000114,STB,2024,BUTLER,,NIVANO,M,,,,,Western Cape,Studying,False,,False,Degree,,,,,2024 Alumni
+STB-000115,STB,2024,ISAACS,,CHAD-LEE,M,,,,,Western Cape,Studying,False,,False,Degree,,,,,2024 Alumni
+STB-000116,STB,2024,MBONISWA,,TUKELO,M,,,,,Western Cape,Studying,False,,True,Diploma,,,,,2024 Alumni
+STB-000117,STB,2024,MEYER,,ASH-TON,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000118,STB,2024,KORKIE,,CALEB,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2024 Alumni
+STB-000119,STB,2024,JULIES,,LISO,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000120,STB,2024,SEPTEMBER,,STHORME,M,,,,,Western Cape,Studying,False,,False,Degree,,,,,2024 Alumni
+STB-000121,STB,2024,ABRAHAMS,,LIAM,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2024 Alumni
+STB-000122,STB,2024,ALVEN,,LUKHO,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000123,STB,2024,BOOYSEN,,DYLAN,M,,,,,Western Cape,Studying,False,,False,Degree,,,,,2024 Alumni
+STB-000124,STB,2024,GAGA,,SOLWETHU,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000125,STB,2024,ZIBI,,LIYEMA,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000126,STB,2024,LINDERS,,TYREEQ,M,,,,,Western Cape,Studying,False,,False,,,,,,2024 Alumni
+STB-000127,STB,2024,KLEIN,,ZANDRE,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000128,STB,2024,MARHESI,,INGUMANGALISO,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000129,STB,2024,VUBA,,PALLO,M,,,,,Western Cape,Studying,False,,False,,,,,,2024 Alumni
+STB-000130,STB,2024,DE KOKER,,TEKLA,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2024 Alumni
+STB-000131,STB,2024,JACOBS,,LYLE,M,,,,,Western Cape,Studying,False,,False,,,,,,2024 Alumni
+STB-000132,STB,2024,SWARTZ,,LUMKA,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000133,STB,2024,WITBOOI,,THEO,M,,,,,Western Cape,Employed,False,,False,Other,,,,,2024 Alumni
+STB-000134,STB,2024,SONTSHI,,AKHANYA,M,,,,,Western Cape,Studying,False,,False,,,,,,2024 Alumni
+STB-000135,STB,2024,PETERSEN,,ZAYDIN,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000136,STB,2024,BONTSHI,,AVELA,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000137,STB,2024,BURMEISTER,,CONNOR,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000138,STB,2024,NTESE,,KUHLE,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2024 Alumni
+STB-000139,STB,2024,NAKI,,VUYISA,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000140,STB,2024,SEPTEMBER,,WAYLIN,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000141,STB,2024,VAN GENSEN,,DANIEL,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2024 Alumni
+STB-000142,STB,2024,BOLITSHI,,LIYEMA,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000143,STB,2024,MLINJANA,,ZEZENKOSI,M,,,,,Western Cape,Studying,False,,False,,,,,,2024 Alumni
+STB-000144,STB,2024,WILLIAMS,,ATHAN,M,,,,,Western Cape,Studying,False,,False,,,,,,2024 Alumni
+STB-000145,STB,2024,ISAACS,,KEALIN,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000146,STB,2024,MANTSHI,,AQHAMA,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000147,STB,2024,MANDULUKA,,LUKHOLO,M,,,,,Western Cape,Studying,False,,False,,,,,,2024 Alumni
+STB-000148,STB,2024,MABINI,,OVAYO,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000149,STB,2024,ZIGXASHI,,AVILE,M,,,,,Western Cape,Internship,False,,False,Other,,,,,2024 Alumni
+STB-000150,STB,2024,NKOKO,,MATTHEW,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000151,STB,2024,MGECWA,,AWODWA,M,,,,,Western Cape,Studying,False,,True,Other,,,,,2024 Alumni
+STB-000152,STB,2024,CHOKO,,LUKHANYO,M,,,,,Western Cape,Studying,False,,False,,,,,,2024 Alumni
+STB-000153,STB,2024,NDALASI,,LIYEMA,M,,,,,Western Cape,Studying,False,,False,,,,,,2024 Alumni
+STB-000154,STB,2024,RAFUZA,,NTSIKA,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2024 Alumni
+STB-000155,STB,2024,FEBRUARIE,,KYLO,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2024 Alumni
+STB-000156,STB,2024,MALUMBAZO,,IVIWE,M,,,,,Western Cape,Studying,False,,False,,,,,,2024 Alumni
+STB-000157,STB,2024,WATERBOER,,WILTON,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000158,STB,2024,WILLIAMS,,JUNAID,M,,,,,Western Cape,Employed,False,,False,,,,,,2024 Alumni
+STB-000159,STB,2024,SWARTBOOI,,LIYABUKWA,M,,,,,Western Cape,Studying,False,,False,,,,,,2024 Alumni
+STB-000160,STB,2024,DYANI,,OLWETHU,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2024 Alumni
+STB-000161,STB,2024,ABRAHAMS,,LEE,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2024 Alumni
+STB-000162,STB,2024,JULIUS,,LOGAN,M,,,,,Western Cape,TBC,False,,False,,,,,,2024 Alumni
+STB-000163,STB,2024,JAMES,,LIYABONA,M,,,,,Western Cape,Studying,False,,False,Other,,,,,2024 Alumni
+STB-000164,STB,2024,APPOLLIS,,MARTINO,M,,,,,Western Cape,TBC,False,,False,,,,,,2024 Alumni
+STB-000165,STB,2024,SMITH,,KYLE,M,,,,,Western Cape,TBC,False,,False,,,,,,2024 Alumni
+STB-000166,STB,2024,HOMBANI,,IMANGE,M,,,,,Western Cape,Studying,False,,False,,,,,,2024 Alumni
+STB-000167,STB,2025,PHILANDER,,ZACH,M,,,,,Western Cape,Studying,False,,False,Degree,BCom (Management Sciences) Investment Management Focul Area,SU,,,2025 Alumni
+STB-000168,STB,2025,PAULSE,,TYREN,M,,,,,Western Cape,Studying,False,,False,Degree,BCom (Management Sciences) Extended Degree Program,SU,,,2025 Alumni
+STB-000169,STB,2025,YEKO,,LIMBONE,M,,,,,Western Cape,Studying,False,,False,Degree,BSc (General),UKZN,,,2025 Alumni
+STB-000170,STB,2025,BURTON,,TRISTAN,M,,,,,Western Cape,Studying,False,,True,Degree,BTh (Bachelor of Theology) Youth Work Focal Area,SU,,,2025 Alumni
+STB-000171,STB,2025,DE KLERK,,JOSHUA,M,,,,,Western Cape,Studying,False,,False,Degree,BCom (Management Sciences),SU,,,2025 Alumni
+STB-000172,STB,2025,FREDERICKS,,RAYHAAN,M,,,,,Western Cape,Studying,False,,False,Degree,BHSc: Medical Laboratory Science,CPUT,,,2025 Alumni
+STB-000173,STB,2025,MPHOMANE,,KGANYA,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000174,STB,2025,MOAHLOLI,,BUKHO,M,,,,,Western Cape,Unemployed,False,,False,Rewriting,Rewriting,Rewriting,Rewriting,Rewriting,2025 Alumni
+STB-000175,STB,2025,ZATHU,,NAKHANE,M,,,,,Western Cape,Studying,False,,False,Degree,BCom Accounting,NWU,,,2025 Alumni
+STB-000176,STB,2025,DANGISA,,NELISA,M,,,,,Western Cape,Studying,False,,False,Rewriting,Rewriting,Rewriting,Rewriting,Rewriting,2025 Alumni
+STB-000177,STB,2025,NEWMAN,,MATTHEW,M,,,,,Western Cape,Employed,False,,False,Degree,BCom (Management Sciences),SU,,,2025 Alumni
+STB-000178,STB,2025,SAMSON,,GRANT,M,,,,,Western Cape,Studying,False,,False,Certifcate,Software Development,CTU,,,2025 Alumni
+STB-000179,STB,2025,ZEZE,,LUKHANYO,M,,,,,Western Cape,Unemployed,False,,False,Rewriting,Rewriting,Rewriting,Rewriting,Rewriting,2025 Alumni
+STB-000180,STB,2025,MAKILA,,KWAMI,M,,,,,Western Cape,Internship,False,,False,Internship,Discipleship Program,Target Life,,,2025 Alumni
+STB-000181,STB,2025,SHIBANI,,IVA,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000182,STB,2025,CUPIDO,,CHAYDON,M,,,,,Western Cape,Studying,False,,True,Degree,Bachelor of Film Arts,CTU,,,2025 Alumni
+STB-000183,STB,2025,CUPIDO,,JOSH,M,,,,,Western Cape,Studying,False,,True,Degree,Bachelor of Arts in Behavioural Sciences with Psychology & Labour Relations Management,NWU,,,2025 Alumni
+STB-000184,STB,2025,DONKERMAN,,ALESSANDRO,M,,,,,Western Cape,Internship,False,,False,Internship,Logistics,DACHSER,,,2025 Alumni
+STB-000185,STB,2025,PAULSE,,NAYDEN,M,,,,,Western Cape,Employed,False,,False,,,,Hudsons,Customer Service,2025 Alumni
+STB-000186,STB,2025,ROSHE,,HLUMELO,M,,,,,Western Cape,Studying,False,,True,Degree,Bachelor of Arts (Political Sciences),Rhodes University,,,2025 Alumni
+STB-000187,STB,2025,MNYANDA,,UVIWE,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000188,STB,2025,CLAYTON,,NEO,M,,,,,Western Cape,Studying,False,,False,Diploma,Civil Engineering,CTU,TBC,TBC,2025 Alumni
+STB-000189,STB,2025,CLAASEN,,XAVIER MIGUEL,M,,,,,Western Cape,Internship,False,,False,Internship,Project Coordinator,Aspire Community,,,2025 Alumni
+STB-000190,STB,2025,MBAWU,,ENDIE,M,,,,,Western Cape,TBC,False,,False,Rewriting,Rewriting,Rewriting,Rewriting,Rewriting,2025 Alumni
+STB-000191,STB,2025,XAKEKILE,,LINDOKUHLE,M,,,,,Western Cape,Studying,False,,False,Diploma,Graphic Design,Eduvos,,,2025 Alumni
+STB-000192,STB,2025,ALEXANDER,,MOUSTAPHA,M,,,,,Western Cape,Employed,False,,False,,,,Informal trader,Goods and Services,2025 Alumni
+STB-000193,STB,2025,DAMONS,,DARREN,M,,,,,Western Cape,Internship,False,,False,Internship,Discipleship Course,YWAM,,,2025 Alumni
+STB-000194,STB,2025,JACOBS,,EARL,M,,,,,Western Cape,Internship,False,,False,Internship,Soccer,Training of changes,Waiting for feedback,Waiting for feedback,2025 Alumni
+STB-000195,STB,2025,JULIUS,,ZAVIER,M,,,,,Western Cape,TBC,False,,False,Waiting for feedback,Waiting for feedback,Waiting for feedback,Waiting for feedback,Waiting for feedback,2025 Alumni
+STB-000196,STB,2025,MAQUBELA,,CHUMA,M,,,,,Western Cape,TBC,False,,False,TBC,TBC,TBC,TBC,TBC,2025 Alumni
+STB-000197,STB,2025,MAHOKOTO,,SIPHO,M,,,,,Western Cape,Studying,False,,False,Degree,BTh (Bachelor of Theology) Youth Work Focal Area,SU,,,2025 Alumni
+STB-000198,STB,2025,LANGEVELDT,,JORDAN,M,,,,,Western Cape,Studying,False,,False,TBC,TBC,TBC,TBC,TBC,2025 Alumni
+STB-000199,STB,2025,NEWMAN,,LIAM,M,,,,,Western Cape,TBC,False,,False,TBC,TBC,TBC,TBC,TBC,2025 Alumni
+STB-000200,STB,2025,MANIES,,ARON,M,,,,,Western Cape,Studying,False,,False,Higher Certificate,Emergency Care,Western Cape Government,,,2025 Alumni
+STB-000201,STB,2025,BOZALEK,,EAMONN,M,,,,,Western Cape,TBC,False,,False,Rewriting,Rewriting,Rewriting,Rewriting,Rewriting,2025 Alumni
+STB-000202,STB,2025,TIZE,,SIBABALO,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000203,STB,2025,BOBOTYANE,,ABONGA,M,,,,,Western Cape,Studying,False,,False,Degree,BCom Business Management,WSU (Walter Sisulu University),,,2025 Alumni
+STB-000204,STB,2025,MOLETSANE,,LEBOHANG,M,,,,,Western Cape,Unemployed,False,,False,Rewriting,Rewriting,Rewriting,Rewriting,Rewriting,2025 Alumni
+STB-000205,STB,2025,MLONYENI,,CHUMA,M,,,,,Western Cape,TBC,False,,False,Waiting for feedback,Waiting for feedback,Waiting for feedback,Waiting for feedback,Waiting for feedback,2025 Alumni
+STB-000206,STB,2025,MTIRARA,,LISOLETHU,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000207,STB,2025,ADONIS,,YAQEEN,M,,,,,Western Cape,Studying,False,,False,Rewriting,Master Maths Program,Rewriting,Rewriting,Rewriting,2025 Alumni
+STB-000208,STB,2025,MURPHY,,ETHAN,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000209,STB,2025,MRALI,,UNATHI,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000210,STB,2025,LOGGENBERG,,CHAD,M,,,,,Western Cape,Unemployed,False,,False,Rewriting,Rewriting,Rewriting,Rewriting,Rewriting,2025 Alumni
+STB-000211,STB,2025,TOMOSE,,LIKHONA,M,,,,,Western Cape,TBC,False,,False,TBC,TBC,TBC,TBC,TBC,2025 Alumni
+STB-000212,STB,2025,DABULA,,ABULELE,M,,,,,Western Cape,Studying,False,,False,Diploma,ICT,CPUT,,,2025 Alumni
+STB-000213,STB,2025,VISAGIE,,HUGAN,M,,,,,Western Cape,Studying,False,,False,Diploma,Architecture,CTU,TBC,TBC,2025 Alumni
+STB-000214,STB,2025,BOONZAAIER,,RUAN,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000215,STB,2025,DAVIES,,MATHEW,M,,,,,Western Cape,Studying,False,,False,Diploma,PGA,TUKS,,,2025 Alumni
+STB-000216,STB,2025,ROSE,,ELIJAH,M,,,,,Western Cape,TBC,False,,False,Waiting for feedback,Waiting for feedback,Waiting for feedback,Waiting for feedback,Waiting for feedback,2025 Alumni
+STB-000217,STB,2025,SMITH,,CEPHAS,M,,,,,Western Cape,Unemployed,False,,False,Rewriting,Rewriting,Rewriting,Rewriting,Rewriting,2025 Alumni
+STB-000218,STB,2025,MPINI,,KAMVA,M,,,,,Western Cape,Internship,False,,False,,,Eagles Rising Leadership Academy,,,2025 Alumni
+STB-000219,STB,2025,MBELEBELE,,ALIZWA,M,,,,,Western Cape,Unemployed,False,,False,Rewriting,Rewriting,Rewriting,Rewriting,Rewriting,2025 Alumni
+STB-000220,STB,2025,BASHE,,OVAYO,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000221,STB,2025,DE VILLIERS,,GABRIEL,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000222,STB,2025,DLAMINI,,NTLANTLA,M,,,,,Western Cape,Unemployed,False,,False,Rewriting,Rewriting,Rewriting,Rewriting,Rewriting,2025 Alumni
+STB-000223,STB,2025,CORNELSON,,GHAMMAAD,M,,,,,Western Cape,Employed,False,,False,,,,Barbershop,Professional Services,2025 Alumni
+STB-000224,STB,2025,ROODTMAN,,DAVID,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000225,STB,2025,KORO,,REAOBOKA,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000226,STB,2025,TSHWILI,,PHAPHAMA,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
+STB-000227,STB,2025,ZWENI,,INGA,M,,,,,Western Cape,Unemployed,False,,False,,Looking for Study/Employment Opportunities,,,,2025 Alumni
