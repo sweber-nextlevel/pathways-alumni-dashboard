@@ -1274,43 +1274,67 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Alumni Projections */}
+          {/* Alumni Projections - Split into two separate containers */}
           <div style={{
-            backgroundColor: 'white',
-            padding: '24px',
-            borderRadius: '12px',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-            border: '1px solid #f3f4f6',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+            gap: '24px',
             marginTop: '32px'
           }}>
-            <h3 style={{
-              margin: '0 0 24px 0',
-              fontSize: '18px',
-              fontWeight: '600',
-              color: '#1f2937'
-            }}>Alumni Growth Projections</h3>
+            {/* Alumni Growth Line Chart */}
             <div style={{
-              display: 'flex',
-              gap: '32px',
-              alignItems: 'flex-start',
-              justifyContent: 'center',
-              flexWrap: 'wrap'
+              backgroundColor: 'white',
+              padding: '24px',
+              borderRadius: '12px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+              border: '1px solid #f3f4f6'
             }}>
-              <div style={{ flex: '1', minWidth: '400px' }}>
+              <h3 style={{
+                margin: '0 0 24px 0',
+                fontSize: '18px',
+                fontWeight: '600',
+                color: '#1f2937'
+              }}>Alumni Growth Projections</h3>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+              }}>
                 <LineChart 
                   actualData={stats?.actualAlumniData || []}
                   projectedData={stats?.projectedAlumniData || []}
                   title="Alumni Growth Over Time"
                 />
+                <div style={{
+                  marginTop: '16px',
+                  textAlign: 'center',
+                  fontSize: '12px',
+                  color: '#6b7280'
+                }}>
+                  Historical data (2022-2025) and projected growth through 2030
+                </div>
               </div>
-              <div style={{ flex: '0 0 300px' }}>
-                <h4 style={{
-                  margin: '0 0 16px 0',
-                  fontSize: '16px',
-                  fontWeight: '600',
-                  color: '#1f2937',
-                  textAlign: 'center'
-                }}>Projected Alumni by Campus (2030)</h4>
+            </div>
+
+            {/* Projected Alumni by Campus */}
+            <div style={{
+              backgroundColor: 'white',
+              padding: '24px',
+              borderRadius: '12px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+              border: '1px solid #f3f4f6'
+            }}>
+              <h3 style={{
+                margin: '0 0 24px 0',
+                fontSize: '18px',
+                fontWeight: '600',
+                color: '#1f2937'
+              }}>Projected Alumni by Campus (2030)</h3>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+              }}>
                 <PieChart
                   data={{
                     'STB': 526, // 226 + 5*60
@@ -1321,24 +1345,16 @@ export default function Home() {
                   showNumbers={true}
                 />
                 <div style={{
-                  marginTop: '12px',
-                  fontSize: '11px',
-                  color: '#6b7280',
+                  marginTop: '16px',
                   textAlign: 'center',
+                  fontSize: '12px',
+                  color: '#6b7280',
                   lineHeight: '1.4'
                 }}>
                   STB: Current + 5 years growth<br/>
                   KRN & PRL: New campuses
                 </div>
               </div>
-            </div>
-            <div style={{
-              marginTop: '16px',
-              textAlign: 'center',
-              fontSize: '12px',
-              color: '#6b7280'
-            }}>
-              Historical data (2022-2025) and projected growth through 2030
             </div>
           </div>
         </main>
