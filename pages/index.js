@@ -62,10 +62,10 @@ export default function Home() {
         
         const projectedAlumniData = [
           { year: 2026, value: 346 }, // 226 + 120
-          { year: 2027, value: 526 }, // 346 + 180
-          { year: 2028, value: 706 }, // 526 + 180
-          { year: 2029, value: 886 }, // 706 + 180
-          { year: 2030, value: 1066 } // 886 + 180
+          { year: 2027, value: 466 }, // 346 + 120
+          { year: 2028, value: 586 }, // 466 + 120
+          { year: 2029, value: 766 }, // 586 + 180
+          { year: 2030, value: 946 } // 766 + 180
         ];
         
         // Calculate studying qualifications breakdown
@@ -90,6 +90,13 @@ export default function Home() {
           }
         });
         
+        // Calculate campus projections data (2030)
+        const campusProjections2030 = {
+          'STB': 526,
+          'KRN': 300, 
+          'PRL': 180
+        };
+        
         const newStats = { 
           activities, 
           cohorts,
@@ -99,7 +106,8 @@ export default function Home() {
           studyingCount,
           bursaryCount,
           actualAlumniData,
-          projectedAlumniData
+          projectedAlumniData,
+          campusProjections2030
         };
         console.log('Calculated stats:', newStats);
         setStats(newStats);
@@ -1714,16 +1722,25 @@ export default function Home() {
                 flexDirection: 'column',
                 alignItems: 'center'
               }}>
-                <PieChart
-                  data={{
-                    'STB': 526, // 226 + 5*60
-                    'KRN': 300, // 5*60
-                    'PRL': 240  // 4*60
-                  }}
-                  title=""
-                  showNumbers={true}
-                  colorFunction={getCampusColor}
-                />
+                {stats?.campusProjections2030 && Object.keys(stats.campusProjections2030).length > 0 ? (
+                  <PieChart
+                    data={stats.campusProjections2030}
+                    title=""
+                    showNumbers={true}
+                    colorFunction={getCampusColor}
+                  />
+                ) : (
+                  <PieChart
+                    data={{
+                      'STB': 526,
+                      'KRN': 300,
+                      'PRL': 180
+                    }}
+                    title=""
+                    showNumbers={true}
+                    colorFunction={getCampusColor}
+                  />
+                )}
                 <div style={{
                   marginTop: '16px',
                   textAlign: 'center',
@@ -1731,8 +1748,8 @@ export default function Home() {
                   color: '#6b7280',
                   lineHeight: '1.4'
                 }}>
-                  STB: Current + 5 years growth<br/>
-                  KRN & PRL: New campuses
+                  STB: Current + growth projections<br/>
+                  KRN & PRL: New campuses expansion
                 </div>
               </div>
             </div>
