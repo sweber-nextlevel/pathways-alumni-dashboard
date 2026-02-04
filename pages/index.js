@@ -991,172 +991,154 @@ export default function Home() {
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <svg width={width} height={height} data-chart={`line-${title}`}> 
-      `${i === 0 ? 'M' : 'L'} ${xScale(d.year)} ${yScale(d.value)}`
-    ).join(' ');
-    
-    // Connect actual and projected lines at the transition point
-    const connectionYear = 2025;
-    const connectionValue = actualData.find(d => d.year === connectionYear)?.value || 
-                           actualData[actualData.length - 1]?.value || 0;
-    
-    const connectedProjectedPath = `M ${xScale(connectionYear)} ${yScale(connectionValue)} ` + 
-      projectedData.map((d) => `L ${xScale(d.year)} ${yScale(d.value)}`).join(' ');
-    
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-        <svg width={width} height={height} style={{ 
-          border: '1px solid #e5e7eb', 
-          borderRadius: '12px', 
-          backgroundColor: 'white',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-        }}>
-          {/* Chart background */}
-          <rect x={padding.left} y={padding.top} width={chartWidth} height={chartHeight} 
-                fill="#fafbfc" stroke="#e5e7eb" strokeWidth="1" rx="4"/>
-          
-          {/* Horizontal grid lines */}
-          <g transform={`translate(${padding.left}, ${padding.top})`}>
-            {[0, 0.25, 0.5, 0.75, 1].map((percent, i) => {
-              const y = chartHeight * percent;
-              const value = Math.round(chartMaxValue * (1 - percent));
-              return (
-                <g key={i}>
-                  <line x1="0" y1={y} x2={chartWidth} y2={y} 
-                        stroke="#e5e7eb" strokeWidth="1" strokeDasharray="2,2"/>
-                  <text x="-10" y={y + 4} textAnchor="end" fontSize="10" fill="#6b7280">
+          <svg width={width} height={height} data-chart={`line-${title}`}>
+            <g transform={`translate(${padding.left}, ${padding.top})`}>
+              {/* Grid lines */}
+              {[0, 200, 400, 600, 800, 1000, 1200, 1400].map(value => (
+                <g key={value}>
+                  <line
+                    x1="0"
+                    y1={yScale(value)}
+                    x2={chartWidth}
+                    y2={yScale(value)}
+                    stroke="#f3f4f6"
+                    strokeWidth="1"
+                  />
+                  <text
+                    x="-10"
+                    y={yScale(value) + 3}
+                    textAnchor="end"
+                    fontSize="10"
+                    fill="#9ca3af"
+                  >
                     {value}
                   </text>
                 </g>
-              );
-            })}
-          </g>
-          
-          {/* Main chart area */}
-          <g transform={`translate(${padding.left}, ${padding.top})`}>
-            {/* Actual data line */}
-            <path
-              d={actualPath}
-              fill="none"
-              stroke="#60A5FA"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            
-            {/* Projected data line (connected) */}
-            <path
-              d={connectedProjectedPath}
-              fill="none"
-              stroke="#34D399"
-              strokeWidth="3"
-              strokeDasharray="8,4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            
-            {/* Actual data points */}
-            {actualData.map((d, i) => (
-              <g key={`actual-${i}`}>
-                <circle
-                  cx={xScale(d.year)}
-                  cy={yScale(d.value)}
-                  r="5"
-                  fill="white"
-                  stroke="#60A5FA"
-                  strokeWidth="3"
-                />
+              ))}
+              
+              {/* Actual data line */}
+              <path
+                d={actualPath}
+                fill="none"
+                stroke="#60A5FA"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              
+              {/* Projected data line */}
+              <path
+                d={projectedPath}
+                fill="none"
+                stroke="#34D399"
+                strokeWidth="3"
+                strokeDasharray="8,4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              
+              {/* Actual data points */}
+              {actualData.map((d, i) => (
+                <g key={`actual-${i}`}>
+                  <circle
+                    cx={xScale(d.year)}
+                    cy={yScale(d.value)}
+                    r="5"
+                    fill="white"
+                    stroke="#60A5FA"
+                    strokeWidth="3"
+                  />
+                  <text
+                    x={xScale(d.year)}
+                    y={yScale(d.value) - 15}
+                    textAnchor="middle"
+                    fontSize="11"
+                    fill="#1f2937"
+                    fontWeight="600"
+                  >
+                    {d.value}
+                  </text>
+                </g>
+              ))}
+              
+              {/* Projected data points */}
+              {projectedData.map((d, i) => (
+                <g key={`projected-${i}`}>
+                  <circle
+                    cx={xScale(d.year)}
+                    cy={yScale(d.value)}
+                    r="5"
+                    fill="white"
+                    stroke="#34D399"
+                    strokeWidth="3"
+                  />
+                  <text
+                    x={xScale(d.year)}
+                    y={yScale(d.value) - 15}
+                    textAnchor="middle"
+                    fontSize="11"
+                    fill="#1f2937"
+                    fontWeight="600"
+                  >
+                    {d.value}
+                  </text>
+                </g>
+              ))}
+              
+              {/* Year labels on x-axis */}
+              {[...new Set([...actualData, ...projectedData].map(d => d.year))].map((year, i) => (
                 <text
-                  x={xScale(d.year)}
-                  y={yScale(d.value) - 15}
+                  key={`year-${i}`}
+                  x={xScale(year)}
+                  y={chartHeight + 25}
                   textAnchor="middle"
-                  fontSize="11"
+                  fontSize="12"
                   fill="#1f2937"
-                  fontWeight="600"
+                  fontWeight="500"
                 >
-                  {d.value}
+                  {year}
                 </text>
-              </g>
-            ))}
-            
-            {/* Projected data points */}
-            {projectedData.map((d, i) => (
-              <g key={`projected-${i}`}>
-                <circle
-                  cx={xScale(d.year)}
-                  cy={yScale(d.value)}
-                  r="5"
-                  fill="white"
-                  stroke="#34D399"
-                  strokeWidth="3"
-                />
-                <text
-                  x={xScale(d.year)}
-                  y={yScale(d.value) - 15}
-                  textAnchor="middle"
-                  fontSize="11"
-                  fill="#1f2937"
-                  fontWeight="600"
-                >
-                  {d.value}
-                </text>
-              </g>
-            ))}
-            
-            {/* Year labels on x-axis */}
-            {[...new Set([...actualData, ...projectedData].map(d => d.year))].map((year, i) => (
+              ))}
+              
+              {/* Axis labels */}
               <text
-                key={`year-${i}`}
-                x={xScale(year)}
-                y={chartHeight + 25}
+                x={chartWidth / 2}
+                y={chartHeight + 55}
                 textAnchor="middle"
-                fontSize="12"
-                fill="#1f2937"
-                fontWeight="500"
+                fontSize="14"
+                fill="#374151"
+                fontWeight="600"
               >
-                {year}
+                Year
               </text>
-            ))}
+              <text
+                x="-45"
+                y={chartHeight / 2}
+                textAnchor="middle"
+                fontSize="14"
+                fill="#374151"
+                fontWeight="600"
+                transform={`rotate(-90, -45, ${chartHeight / 2})`}
+              >
+                Number of Alumni
+              </text>
+            </g>
             
-            {/* Axis labels */}
-            <text
-              x={chartWidth / 2}
-              y={chartHeight + 55}
-              textAnchor="middle"
-              fontSize="14"
-              fill="#374151"
-              fontWeight="600"
-            >
-              Year
-            </text>
-            <text
-              x="-45"
-              y={chartHeight / 2}
-              textAnchor="middle"
-              fontSize="14"
-              fill="#374151"
-              fontWeight="600"
-              transform={`rotate(-90, -45, ${chartHeight / 2})`}
-            >
-              Number of Alumni
-            </text>
-          </g>
-          
-          {/* Legend */}
-          <g transform={`translate(${width - 150}, 25)`}>
-            <rect x="-10" y="-10" width="140" height="50" fill="white" 
-                  stroke="#e5e7eb" strokeWidth="1" rx="6" opacity="0.95"/>
-            
-            <circle cx="5" cy="5" r="4" fill="#60A5FA"/>
-            <line x1="1" y1="5" x2="9" y2="5" stroke="#60A5FA" strokeWidth="2"/>
-            <text x="15" y="9" fontSize="12" fill="#1f2937" fontWeight="500">Actual</text>
-            
-            <circle cx="5" cy="25" r="4" fill="#34D399"/>
-            <line x1="1" y1="25" x2="9" y2="25" stroke="#34D399" strokeWidth="2" strokeDasharray="4,2"/>
-            <text x="15" y="29" fontSize="12" fill="#1f2937" fontWeight="500">Projected</text>
-          </g>
-        </svg>
-      </div>
+            {/* Legend */}
+            <g transform={`translate(${width - 150}, 25)`}>
+              <rect x="-10" y="-10" width="140" height="50" fill="white" 
+                    stroke="#e5e7eb" strokeWidth="1" rx="6" opacity="0.95"/>
+              
+              <circle cx="5" cy="5" r="4" fill="#60A5FA"/>
+              <line x1="1" y1="5" x2="9" y2="5" stroke="#60A5FA" strokeWidth="2"/>
+              <text x="15" y="9" fontSize="12" fill="#1f2937" fontWeight="500">Actual</text>
+              
+              <circle cx="5" cy="25" r="4" fill="#34D399"/>
+              <line x1="1" y1="25" x2="9" y2="25" stroke="#34D399" strokeWidth="2" strokeDasharray="4,2"/>
+              <text x="15" y="29" fontSize="12" fill="#1f2937" fontWeight="500">Projected</text>
+            </g>
+          </svg>
+        </div>
       </ChartContainer>
     );
   };
