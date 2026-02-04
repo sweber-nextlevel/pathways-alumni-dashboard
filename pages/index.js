@@ -559,7 +559,36 @@ export default function Home() {
     };
     
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+      <ChartContainer 
+        title={title}
+        onDownload={() => {
+          const waffleDiv = document.querySelector(`[data-chart="waffle-${title}"]`);
+          if (waffleDiv) {
+            // For waffle chart, we need to capture the div as it's not SVG
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 400;
+            canvas.height = 300;
+            
+            // Fill white background
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Simple fallback - just download a placeholder for now
+            canvas.toBlob((blob) => {
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = `waffle-chart-${title || 'activities'}.png`;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+            }, 'image/png');
+          }
+        }}
+      >
+      <div data-chart={`waffle-${title}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
         <div style={{
           display: 'grid',
           gridTemplateColumns: `repeat(${squaresPerRow}, ${squareSize}px)`,
@@ -622,6 +651,7 @@ export default function Home() {
           </div>
         )}
       </div>
+      </ChartContainer>
     );
   };
 
@@ -844,27 +874,70 @@ export default function Home() {
     };
     
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '600px' }}>
-        {Object.entries(data).map(([label, value], idx) => (
-          <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <div style={{ minWidth: '140px', fontSize: '14px', textAlign: 'right', fontWeight: '500' }}>{label}</div>
-            <div style={{
-              flex: 1, height: '40px', backgroundColor: '#f0f0f0', borderRadius: '8px',
-              position: 'relative', overflow: 'hidden', minWidth: '300px'
-            }}>
-              <div style={{
-                width: `${Math.max((value / maxValue) * 100, 5)}%`, height: '100%',
-                backgroundColor: getBarColor(label),
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'white', fontSize: '14px', fontWeight: '700',
-                minWidth: '50px'
-              }}>
-                {value}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <ChartContainer 
+        title={title}
+        onDownload={() => {
+          const svg = document.querySelector(`svg[data-chart="bar-${title}"]`);
+          if (svg) downloadChart(svg, `bar-chart-${title || 'data'}`);
+        }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <svg width="500" height={`${Object.keys(data).length * 60 + 40}`} data-chart={`bar-${title}`}>
+            {Object.entries(data).map(([label, value], idx) => {
+              const yPos = idx * 60 + 30;
+              const barWidth = Math.max((value / maxValue) * 300, 20);
+              
+              return (
+                <g key={label}>
+                  {/* Label */}
+                  <text
+                    x="140"
+                    y={yPos + 15}
+                    textAnchor="end"
+                    fontSize="12"
+                    fontWeight="500"
+                    fill="#374151"
+                  >
+                    {label}
+                  </text>
+                  
+                  {/* Bar background */}
+                  <rect
+                    x="150"
+                    y={yPos}
+                    width="300"
+                    height="30"
+                    fill="#f3f4f6"
+                    rx="8"
+                  />
+                  
+                  {/* Bar */}
+                  <rect
+                    x="150"
+                    y={yPos}
+                    width={barWidth}
+                    height="30"
+                    fill={getBarColor(label)}
+                    rx="8"
+                  />
+                  
+                  {/* Value text */}
+                  <text
+                    x={150 + barWidth / 2}
+                    y={yPos + 20}
+                    textAnchor="middle"
+                    fontSize="12"
+                    fontWeight="700"
+                    fill="white"
+                  >
+                    {value}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+        </div>
+      </ChartContainer>
     );
   };
 
@@ -897,7 +970,20 @@ export default function Home() {
     ).join(' ');
     
     // Create path data for projected line
-    const projectedPath = projectedData.map((d, i) => 
+    const projectedPath = projectedData.map((d, i) =>
+      `${i === 0 ? 'M' : 'L'} ${xScale(d.year)} ${yScale(d.value)}`
+    ).join(' ');
+    
+    return (
+      <ChartContainer 
+        title={title}
+        onDownload={() => {
+          const svg = document.querySelector(`svg[data-chart="line-${title}"]`);
+          if (svg) downloadChart(svg, `line-chart-${title || 'alumni-growth'}`);
+        }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <svg width={width} height={height} data-chart={`line-${title}`}> 
       `${i === 0 ? 'M' : 'L'} ${xScale(d.year)} ${yScale(d.value)}`
     ).join(' ');
     
@@ -1063,6 +1149,7 @@ export default function Home() {
           </g>
         </svg>
       </div>
+      </ChartContainer>
     );
   };
 
