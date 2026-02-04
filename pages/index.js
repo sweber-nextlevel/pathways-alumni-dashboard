@@ -1093,10 +1093,21 @@ export default function Home() {
               color: '#1f2937',
               fontFamily: '"Montserrat", sans-serif'
             }}>Pathways</h1>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-              <div style={{ fontSize: '14px', color: '#6b7280' }}>CA STB Alumni Dashboard</div>
-              <div style={{ fontSize: '12px', color: '#9ca3af', marginTop: '2px' }}>Updated at 03 February 2026</div>
-            </div>
+            
+            <h2 style={{
+              margin: 0,
+              fontSize: '20px',
+              fontWeight: '600',
+              color: '#1f2937',
+              fontFamily: '"Montserrat", sans-serif',
+              textAlign: 'center'
+            }}>CA STB Alumni Dashboard</h2>
+            
+            <div style={{ 
+              fontSize: '12px', 
+              color: '#9ca3af', 
+              textAlign: 'right' 
+            }}>Updated at 03 February 2026</div>
           </div>
         </nav>
 
