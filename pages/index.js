@@ -104,12 +104,14 @@ export default function Home() {
           console.log('Calculated stats:', newStats);
           setStats(newStats);
           return;
-        }catch(e){
+        } catch(e) {
           console.log('API failed:', e);
           setError('Failed to fetch learners from API');
         }
+      } catch(e) {
+        console.log('Backend failed:', e);
+        setError('Failed to fetch learners from backend');
       }
-      setError('Failed to fetch learners from backend');
     }
     tryFetch();
   }, [])
