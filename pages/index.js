@@ -192,6 +192,7 @@ export default function Home() {
     
     return (
       <div 
+        className="chart-container"
         style={{ position: 'relative' }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -1109,6 +1110,11 @@ export default function Home() {
             padding: 12px !important;
           }
           
+          /* Center all content on mobile */
+          h3, h4 {
+            text-align: center !important;
+          }
+          
           /* Force single column on small screens */
           [data-grid="stats"] {
             grid-template-columns: 1fr !important;
@@ -1118,6 +1124,50 @@ export default function Home() {
           [data-grid="charts"] {
             grid-template-columns: 1fr !important;
             gap: 16px !important;
+          }
+          
+          /* Center chart containers */
+          [data-grid="charts"] > div {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
+          
+          /* Fix cohort activities grid */
+          .cohort-activities-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          
+          /* Fix projections grid */
+          .projections-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          
+          /* Center activity distribution content */
+          .activity-comparison {
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          
+          /* Scale charts appropriately */
+          svg {
+            max-width: 90vw !important;
+            width: auto !important;
+            height: auto !important;
+          }
+          
+          /* Prevent text overflow in charts */
+          text {
+            font-size: 10px !important;
+          }
+          
+          /* Make chart containers more mobile-friendly */
+          .chart-container {
+            overflow: visible !important;
+            padding: 8px !important;
           }
         }
         
@@ -1131,6 +1181,16 @@ export default function Home() {
           nav h1, nav h2 {
             order: unset !important;
             text-align: center !important;
+          }
+          
+          /* Extra small screens - more aggressive scaling */
+          svg {
+            max-width: 85vw !important;
+          }
+          
+          /* Ensure no horizontal overflow */
+          body {
+            overflow-x: hidden !important;
           }
         }
       `}</style>
@@ -1277,10 +1337,13 @@ export default function Home() {
                 margin: '0 0 20px 0',
                 fontSize: '18px',
                 fontWeight: '600',
-                color: '#1f2937'
+                color: '#1f2937',
+                textAlign: 'center'
               }}>Total Activity Distribution (all cohorts)</h3>
               {stats?.activities && Object.keys(stats.activities).length > 0 ? (
-                <div style={{
+                <div 
+                  className="activity-comparison"
+                  style={{
                   display: 'flex',
                   gap: 'clamp(16px, 4vw, 32px)',
                   alignItems: 'flex-start',
@@ -1337,7 +1400,8 @@ export default function Home() {
                 margin: '0 0 20px 0',
                 fontSize: '18px',
                 fontWeight: '600',
-                color: '#1f2937'
+                color: '#1f2937',
+                textAlign: 'center'
               }}>Alumni per Cohort</h3>
               {stats?.cohorts && Object.keys(stats.cohorts).length > 0 ? (
                 <BarChart data={stats.cohorts} title="Cohort Distribution" />
@@ -1360,10 +1424,13 @@ export default function Home() {
               margin: '0 0 24px 0',
               fontSize: '18px',
               fontWeight: '600',
-              color: '#1f2937'
+              color: '#1f2937',
+              textAlign: 'center'
             }}>Activity Distribution by Cohort</h3>
             {stats?.cohortActivities && Object.keys(stats.cohortActivities).length > 0 ? (
-              <div style={{
+              <div 
+                className="cohort-activities-grid"
+                style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
                 gap: 'clamp(16px, 3vw, 24px)'
@@ -1427,7 +1494,8 @@ export default function Home() {
                 margin: '0 0 24px 0',
                 fontSize: '18px',
                 fontWeight: '600',
-                color: '#1f2937'
+                color: '#1f2937',
+                textAlign: 'center'
               }}>Studying Alumni & Bursary Recipients</h3>
               <div style={{
                 display: 'flex',
@@ -1464,7 +1532,8 @@ export default function Home() {
                 margin: '0 0 24px 0',
                 fontSize: '18px',
                 fontWeight: '600',
-                color: '#1f2937'
+                color: '#1f2937',
+                textAlign: 'center'
               }}>Qualification Types</h3>
               <div style={{
                 display: 'flex',
@@ -1494,7 +1563,9 @@ export default function Home() {
           </div>
 
           {/* Alumni Projections - Split into two separate containers */}
-          <div style={{
+          <div 
+            className="projections-grid"
+            style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: 'clamp(16px, 3vw, 24px)',
@@ -1512,7 +1583,8 @@ export default function Home() {
                 margin: '0 0 24px 0',
                 fontSize: '18px',
                 fontWeight: '600',
-                color: '#1f2937'
+                color: '#1f2937',
+                textAlign: 'center'
               }}>Alumni Growth Projections</h3>
               <div style={{
                 display: 'flex',
@@ -1547,7 +1619,8 @@ export default function Home() {
                 margin: '0 0 24px 0',
                 fontSize: '18px',
                 fontWeight: '600',
-                color: '#1f2937'
+                color: '#1f2937',
+                textAlign: 'center'
               }}>Projected Alumni by Campus (2030)</h3>
               <div style={{
                 display: 'flex',
