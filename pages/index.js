@@ -136,6 +136,104 @@ export default function Home() {
     const campusColors = ['#A78BFA', '#F87171', '#FB7185', '#C4B5FD'];
     return campusColors[Math.abs(campus.charCodeAt(0) || 0) % campusColors.length];
   };
+
+  // Universal chart download function
+  const downloadChart = (svgElement, filename) => {
+    try {
+      // Create a canvas element
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Get SVG data
+      const svgData = new XMLSerializer().serializeToString(svgElement);
+      const svgBlob = new Blob([svgData], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(svgBlob);
+      
+      // Create image element
+      const img = new Image();
+      
+      img.onload = function() {
+        // Set canvas size to match image
+        canvas.width = img.width || 400;
+        canvas.height = img.height || 400;
+        
+        // Fill white background
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw the image
+        ctx.drawImage(img, 0, 0);
+        
+        // Download the image
+        canvas.toBlob((blob) => {
+          const downloadUrl = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = downloadUrl;
+          a.download = `${filename}.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(downloadUrl);
+        }, 'image/png');
+        
+        URL.revokeObjectURL(url);
+      };
+      
+      img.src = url;
+    } catch (error) {
+      console.error('Error downloading chart:', error);
+      alert('Sorry, there was an error downloading the chart.');
+    }
+  };
+
+  // Chart container with hover download button
+  const ChartContainer = ({ children, title, onDownload }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    
+    return (
+      <div 
+        style={{ position: 'relative' }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {children}
+        {isHovered && (
+          <button
+            onClick={onDownload}
+            style={{
+              position: 'absolute',
+              top: '8px',
+              right: '8px',
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              border: '1px solid #d1d5db',
+              borderRadius: '6px',
+              padding: '6px 8px',
+              fontSize: '12px',
+              fontWeight: '500',
+              color: '#374151',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+              zIndex: 1000,
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = 'white';
+              e.target.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+              e.target.style.transform = 'scale(1)';
+            }}
+          >
+            📷 Save Chart
+          </button>
+        )}
+      </div>
+    );
+  };
   
   // Donut Chart Component - like pie chart but with hollow center
   const DonutChart = ({ data, title, centerText }) => {
@@ -171,147 +269,155 @@ export default function Home() {
     };
     
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
-        <svg width="240" height="240">
-          {/* Donut segments */}
-          {Object.entries(data).map(([label, value], idx) => {
-            const percentage = value / total;
-            const angle = percentage * 360;
-            const startAngle = currentAngle;
-            const endAngle = currentAngle + angle;
+      <ChartContainer 
+        title={title}
+        onDownload={() => {
+          const svg = document.querySelector('svg'); // Get the SVG element
+          if (svg) downloadChart(svg, `donut-chart-${title || 'qualification-types'}`);
+        }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
+          <svg width="240" height="240" id={`donut-${title || 'chart'}`}>
+            {/* Donut segments */}
+            {Object.entries(data).map(([label, value], idx) => {
+              const percentage = value / total;
+              const angle = percentage * 360;
+              const startAngle = currentAngle;
+              const endAngle = currentAngle + angle;
+              
+              // Calculate outer arc path
+              const x1 = 120 + outerRadius * Math.cos(startAngle * Math.PI / 180);
+              const y1 = 120 + outerRadius * Math.sin(startAngle * Math.PI / 180);
+              const x2 = 120 + outerRadius * Math.cos(endAngle * Math.PI / 180);
+              const y2 = 120 + outerRadius * Math.sin(endAngle * Math.PI / 180);
+              
+              // Calculate inner arc path
+              const x3 = 120 + innerRadius * Math.cos(endAngle * Math.PI / 180);
+              const y3 = 120 + innerRadius * Math.sin(endAngle * Math.PI / 180);
+              const x4 = 120 + innerRadius * Math.cos(startAngle * Math.PI / 180);
+              const y4 = 120 + innerRadius * Math.sin(startAngle * Math.PI / 180);
+              
+              const largeArcFlag = angle > 180 ? 1 : 0;
+              
+              // Donut path (outer arc + inner arc)
+              const pathData = [
+                'M', x1, y1,
+                'A', outerRadius, outerRadius, 0, largeArcFlag, 1, x2, y2,
+                'L', x3, y3,
+                'A', innerRadius, innerRadius, 0, largeArcFlag, 0, x4, y4,
+                'Z'
+              ].join(' ');
+              
+              // Calculate label position (outside the donut)
+              const midAngle = (startAngle + endAngle) / 2;
+              const labelRadius = outerRadius + 25; // Position labels outside the donut
+              const labelX = 120 + labelRadius * Math.cos(midAngle * Math.PI / 180);
+              const labelY = 120 + labelRadius * Math.sin(midAngle * Math.PI / 180);
+              
+              // Calculate line position (from donut edge to label)
+              const lineStartX = 120 + (outerRadius + 5) * Math.cos(midAngle * Math.PI / 180);
+              const lineStartY = 120 + (outerRadius + 5) * Math.sin(midAngle * Math.PI / 180);
+              const lineEndX = 120 + (outerRadius + 20) * Math.cos(midAngle * Math.PI / 180);
+              const lineEndY = 120 + (outerRadius + 20) * Math.sin(midAngle * Math.PI / 180);
+              
+              currentAngle = endAngle;
+              
+              return (
+                <g key={label}>
+                  <path
+                    d={pathData}
+                    fill={getQualificationColor(label)}
+                    stroke="white"
+                    strokeWidth="2"
+                    style={{ cursor: 'pointer' }}
+                    onMouseEnter={(e) => handleMouseEnter(e, label, value, percentage)}
+                    onMouseLeave={handleMouseLeave}
+                  />
+                  
+                  {/* Leader line from segment to label */}
+                  <line
+                    x1={lineStartX}
+                    y1={lineStartY}
+                    x2={lineEndX}
+                    y2={lineEndY}
+                    stroke="#6b7280"
+                    strokeWidth="1"
+                  />
+                  
+                  {/* Segment label outside the donut */}
+                  <text
+                    x={labelX}
+                    y={labelY - 5}
+                    textAnchor={labelX > 120 ? 'start' : 'end'}
+                    dominantBaseline="middle"
+                    fontSize="12"
+                    fontWeight="600"
+                    fill="#1f2937"
+                    style={{ pointerEvents: 'none' }}
+                  >
+                    {label}
+                  </text>
+                  
+                  {/* Percentage below label */}
+                  <text
+                    x={labelX}
+                    y={labelY + 8}
+                    textAnchor={labelX > 120 ? 'start' : 'end'}
+                    dominantBaseline="middle"
+                    fontSize="10"
+                    fill="#6b7280"
+                    style={{ pointerEvents: 'none' }}
+                  >
+                    {Math.round(percentage * 100)}% ({value})
+                  </text>
+                </g>
+              );
+            })}
             
-            // Calculate outer arc path
-            const x1 = 120 + outerRadius * Math.cos(startAngle * Math.PI / 180);
-            const y1 = 120 + outerRadius * Math.sin(startAngle * Math.PI / 180);
-            const x2 = 120 + outerRadius * Math.cos(endAngle * Math.PI / 180);
-            const y2 = 120 + outerRadius * Math.sin(endAngle * Math.PI / 180);
-            
-            // Calculate inner arc path
-            const x3 = 120 + innerRadius * Math.cos(endAngle * Math.PI / 180);
-            const y3 = 120 + innerRadius * Math.sin(endAngle * Math.PI / 180);
-            const x4 = 120 + innerRadius * Math.cos(startAngle * Math.PI / 180);
-            const y4 = 120 + innerRadius * Math.sin(startAngle * Math.PI / 180);
-            
-            const largeArcFlag = angle > 180 ? 1 : 0;
-            
-            // Donut path (outer arc + inner arc)
-            const pathData = [
-              'M', x1, y1,
-              'A', outerRadius, outerRadius, 0, largeArcFlag, 1, x2, y2,
-              'L', x3, y3,
-              'A', innerRadius, innerRadius, 0, largeArcFlag, 0, x4, y4,
-              'Z'
-            ].join(' ');
-            
-            // Calculate label position (outside the donut)
-            const midAngle = (startAngle + endAngle) / 2;
-            const labelRadius = outerRadius + 25; // Position labels outside the donut
-            const labelX = 120 + labelRadius * Math.cos(midAngle * Math.PI / 180);
-            const labelY = 120 + labelRadius * Math.sin(midAngle * Math.PI / 180);
-            
-            // Calculate line position (from donut edge to label)
-            const lineStartX = 120 + (outerRadius + 5) * Math.cos(midAngle * Math.PI / 180);
-            const lineStartY = 120 + (outerRadius + 5) * Math.sin(midAngle * Math.PI / 180);
-            const lineEndX = 120 + (outerRadius + 20) * Math.cos(midAngle * Math.PI / 180);
-            const lineEndY = 120 + (outerRadius + 20) * Math.sin(midAngle * Math.PI / 180);
-            
-            currentAngle = endAngle;
-            
-            return (
-              <g key={label}>
-                <path
-                  d={pathData}
-                  fill={getQualificationColor(label)}
-                  stroke="white"
-                  strokeWidth="2"
-                  style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => handleMouseEnter(e, label, value, percentage)}
-                  onMouseLeave={handleMouseLeave}
-                />
-                
-                {/* Leader line from segment to label */}
-                <line
-                  x1={lineStartX}
-                  y1={lineStartY}
-                  x2={lineEndX}
-                  y2={lineEndY}
-                  stroke="#6b7280"
-                  strokeWidth="1"
-                />
-                
-                {/* Segment label outside the donut */}
-                <text
-                  x={labelX}
-                  y={labelY - 5}
-                  textAnchor={labelX > 120 ? 'start' : 'end'}
-                  dominantBaseline="middle"
-                  fontSize="12"
-                  fontWeight="600"
-                  fill="#1f2937"
-                  style={{ pointerEvents: 'none' }}
-                >
-                  {label}
-                </text>
-                
-                {/* Percentage below label */}
-                <text
-                  x={labelX}
-                  y={labelY + 8}
-                  textAnchor={labelX > 120 ? 'start' : 'end'}
-                  dominantBaseline="middle"
-                  fontSize="10"
-                  fill="#6b7280"
-                  style={{ pointerEvents: 'none' }}
-                >
-                  {Math.round(percentage * 100)}% ({value})
-                </text>
-              </g>
-            );
-          })}
+            {/* Center text */}
+            <text
+              x={120}
+              y={120 - 5}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="16"
+              fontWeight="700"
+              fill="#1f2937"
+            >
+              {centerText || total}
+            </text>
+            <text
+              x={120}
+              y={120 + 12}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="10"
+              fill="#6b7280"
+            >
+              Studying
+            </text>
+          </svg>
           
-          {/* Center text */}
-          <text
-            x={120}
-            y={120 - 5}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fontSize="16"
-            fontWeight="700"
-            fill="#1f2937"
-          >
-            {centerText || total}
-          </text>
-          <text
-            x={120}
-            y={120 + 12}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fontSize="10"
-            fill="#6b7280"
-          >
-            Studying
-          </text>
-        </svg>
-        
-        {/* Tooltip */}
-        {tooltip.show && (
-          <div style={{
-            position: 'fixed',
-            left: tooltip.x + 10,
-            top: tooltip.y - 10,
-            backgroundColor: 'rgba(0,0,0,0.8)',
-            color: 'white',
-            padding: '8px 12px',
-            borderRadius: '6px',
-            fontSize: '12px',
-            pointerEvents: 'none',
-            zIndex: 1000,
-            whiteSpace: 'nowrap'
-          }}>
-            {tooltip.content}
-          </div>
-        )}
-      </div>
+          {/* Tooltip */}
+          {tooltip.show && (
+            <div style={{
+              position: 'fixed',
+              left: tooltip.x + 10,
+              top: tooltip.y - 10,
+              backgroundColor: 'rgba(0,0,0,0.8)',
+              color: 'white',
+              padding: '8px 12px',
+              borderRadius: '6px',
+              fontSize: '12px',
+              pointerEvents: 'none',
+              zIndex: 1000,
+              whiteSpace: 'nowrap'
+            }}>
+              {tooltip.content}
+            </div>
+          )}
+        </div>
+      </ChartContainer>
     );
   };
 
@@ -546,97 +652,105 @@ export default function Home() {
     };
     
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
-        <svg width="200" height="200">
-          {sortedEntries.map(([label, value], idx) => {
-            const percentage = value / total;
-            const angle = percentage * 360;
-            const startAngle = currentAngle;
-            const endAngle = currentAngle + angle;
-            
-            // Calculate path
-            const x1 = center + radius * Math.cos(startAngle * Math.PI / 180);
-            const y1 = center + radius * Math.sin(startAngle * Math.PI / 180);
-            const x2 = center + radius * Math.cos(endAngle * Math.PI / 180);
-            const y2 = center + radius * Math.sin(endAngle * Math.PI / 180);
-            
-            const largeArcFlag = angle > 180 ? 1 : 0;
-            const pathData = [
-              'M', center, center,
-              'L', x1, y1,
-              'A', radius, radius, 0, largeArcFlag, 1, x2, y2,
-              'Z'
-            ].join(' ');
-            
-            // Calculate label position (middle of the arc)
-            const midAngle = (startAngle + endAngle) / 2;
-            const labelRadius = radius * 0.7;
-            const labelX = center + labelRadius * Math.cos(midAngle * Math.PI / 180);
-            const labelY = center + labelRadius * Math.sin(midAngle * Math.PI / 180);
-            
-            currentAngle = endAngle;
-            
-            return (
-              <g key={label}>
-                <path
-                  d={pathData}
-                  fill={colorFunction ? colorFunction(label) : getActivityColor(label)}
-                  stroke="white"
-                  strokeWidth="2"
-                  style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => handleMouseEnter(e, label, value, percentage)}
-                  onMouseLeave={handleMouseLeave}
-                />
-                {percentage > 0.05 && ( // Only show label if segment is big enough
-                  <text
-                    x={labelX}
-                    y={labelY}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    fontSize="10"
-                    fontWeight="600"
-                    fill="#1f2937"
-                    style={{ pointerEvents: 'none' }}
-                  >
-                    {showNumbers ? value : `${Math.round(percentage * 100)}%`}
-                  </text>
-                )}
-                {percentage > 0.08 && ( // Show label name for larger segments
-                  <text
-                    x={labelX}
-                    y={labelY + 12}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    fontSize="8"
-                    fill="#6b7280"
-                    style={{ pointerEvents: 'none' }}
-                  >
-                    {label.substring(0, 8)}
-                  </text>
-                )}
-              </g>
-            );
-          })}
-        </svg>
-        {tooltip.show && (
-          <div style={{
-            position: 'fixed',
-            left: tooltip.x + 10,
-            top: tooltip.y - 10,
-            backgroundColor: 'rgba(0, 0, 0, 0.9)',
-            color: 'white',
-            padding: '8px 12px',
-            borderRadius: '4px',
-            fontSize: '12px',
-            fontWeight: '500',
-            pointerEvents: 'none',
-            zIndex: 1000,
-            whiteSpace: 'nowrap'
-          }}>
-            {tooltip.content}
-          </div>
-        )}
-      </div>
+      <ChartContainer 
+        title={title}
+        onDownload={() => {
+          const svg = document.querySelector(`svg[data-chart="pie-${title}"]`);
+          if (svg) downloadChart(svg, `pie-chart-${title || 'activities'}`);
+        }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
+          <svg width="200" height="200" data-chart={`pie-${title}`}>
+            {sortedEntries.map(([label, value], idx) => {
+              const percentage = value / total;
+              const angle = percentage * 360;
+              const startAngle = currentAngle;
+              const endAngle = currentAngle + angle;
+              
+              // Calculate path
+              const x1 = center + radius * Math.cos(startAngle * Math.PI / 180);
+              const y1 = center + radius * Math.sin(startAngle * Math.PI / 180);
+              const x2 = center + radius * Math.cos(endAngle * Math.PI / 180);
+              const y2 = center + radius * Math.sin(endAngle * Math.PI / 180);
+              
+              const largeArcFlag = angle > 180 ? 1 : 0;
+              const pathData = [
+                'M', center, center,
+                'L', x1, y1,
+                'A', radius, radius, 0, largeArcFlag, 1, x2, y2,
+                'Z'
+              ].join(' ');
+              
+              // Calculate label position (middle of the arc)
+              const midAngle = (startAngle + endAngle) / 2;
+              const labelRadius = radius * 0.7;
+              const labelX = center + labelRadius * Math.cos(midAngle * Math.PI / 180);
+              const labelY = center + labelRadius * Math.sin(midAngle * Math.PI / 180);
+              
+              currentAngle = endAngle;
+              
+              return (
+                <g key={label}>
+                  <path
+                    d={pathData}
+                    fill={colorFunction ? colorFunction(label) : getActivityColor(label)}
+                    stroke="white"
+                    strokeWidth="2"
+                    style={{ cursor: 'pointer' }}
+                    onMouseEnter={(e) => handleMouseEnter(e, label, value, percentage)}
+                    onMouseLeave={handleMouseLeave}
+                  />
+                  {percentage > 0.05 && ( // Only show label if segment is big enough
+                    <text
+                      x={labelX}
+                      y={labelY}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      fontSize="10"
+                      fontWeight="600"
+                      fill="#1f2937"
+                      style={{ pointerEvents: 'none' }}
+                    >
+                      {showNumbers ? value : `${Math.round(percentage * 100)}%`}
+                    </text>
+                  )}
+                  {percentage > 0.08 && ( // Show label name for larger segments
+                    <text
+                      x={labelX}
+                      y={labelY + 12}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      fontSize="8"
+                      fill="#6b7280"
+                      style={{ pointerEvents: 'none' }}
+                    >
+                      {label.substring(0, 8)}
+                    </text>
+                  )}
+                </g>
+              );
+            })}
+          </svg>
+          {tooltip.show && (
+            <div style={{
+              position: 'fixed',
+              left: tooltip.x + 10,
+              top: tooltip.y - 10,
+              backgroundColor: 'rgba(0, 0, 0, 0.9)',
+              color: 'white',
+              padding: '8px 12px',
+              borderRadius: '4px',
+              fontSize: '12px',
+              fontWeight: '500',
+              pointerEvents: 'none',
+              zIndex: 1000,
+              whiteSpace: 'nowrap'
+            }}>
+              {tooltip.content}
+            </div>
+          )}
+        </div>
+      </ChartContainer>
     );
   };
   
